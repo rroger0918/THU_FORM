@@ -1,0 +1,99 @@
+﻿@*@model IEnumerable<ThuForm.Models.RegistForm>*@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+<section id="contact-page ">
+
+    <div class="container ">
+        <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
+            <div class="col-md-12 ">                
+                    <div class="contact-form  ">
+                        <div class="row align-items-center">
+                            <div class="col-sm-10 your-message col-sm-offset-1 ">
+                                <div class="form-group">
+                                    @if (Model.Count() == 0)
+                                    {
+                                        <div class="alert" alert-info>
+                                            <strong>無紀錄</strong>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <br>
+                                        <h2>當前成員</h2>
+                                        <ul class="nav navbar-nav">
+                                            <li>@Html.ActionLink("管理員登出", "Logout", "Home")</li>
+                                        </ul>
+
+
+                                        <table class="table">
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.DataID)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Id)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Name)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Mail)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Total)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Note)
+                                                </th>
+                                                <th></th>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DataID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Mail)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Total)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Note)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit")?DataId=@item.DataID" class="btn btn-warning">編輯</a>
+                                                <a href="@Url.Action("Delete")?DataId=@item.DataID"
+                                                   class="btn btn-danger"
+                                                   onclick="return confirm('確定要刪除序號 @item.DataID - @item.Name 的記錄嗎？');">
+                                                    刪除
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                            }
+                                        </table>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

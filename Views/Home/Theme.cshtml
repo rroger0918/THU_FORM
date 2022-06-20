@@ -1,0 +1,315 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!------ 照片牆 ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/photowall.css">
+
+<!------ 照片牆 ---------->
+
+<style>
+    .map {
+        margin-top: 20px;
+    }
+</style>
+
+
+
+<section class="portfolio" id="portfolio">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <br>
+                <br>
+                <h1 class="gallery-title">活動講師群</h1>
+                <h3 class="gallery-subtitle">本次活動邀請到國內多位重量級大師及專業講師，來分享他們的專業知識和經驗</h3>
+            </div>
+
+            <div align="center">
+                <button class="filter-button" data-filter="all">All</button>
+                <button class="filter-button" data-filter="category1">公家單位</button>
+                <button class="filter-button" data-filter="category2">民營單位</button>
+            </div>
+
+            <br />
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/0326.jpg" />
+                    <div class='img-info'>
+                        <h4>中華郵政 資安管理員</h4>
+                        <h4>璇璇海豹</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/400X250.jpg" />
+                    <div class='img-info'>
+                        <h4>ShopBack 前端工程師</h4>
+                        <h4>J0hnny</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/yachu.jpg" />
+                    <div class='img-info'>
+                        <h4>法務部資訊處 分析師</h4>
+                        <h4>Wenna</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/adam.jpg" />
+                    <div class='img-info'>
+                        <h4>勤業眾信 資安風險諮詢顧問</h4>
+                        <h4>Adam</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/e..jpg" />
+                    <div class='img-info'>
+                        <h4>E.T._Studio 全端工程師</h4>
+                        <h4>Rose</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/yang.jpg" />
+                    <div class='img-info'>
+                        <h4>PE Fund 研究員</h4>
+                        <h4>Sam 誠君</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/jhao.jpg" />
+                    <div class='img-info'>
+                        <h4>蝦皮購物 測試工程師 </h4>
+                        <h4>趙姊</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/Limon.jpg" />
+                    <div class='img-info'>
+                        <h4>提克斯國際餐飲 執行長特助</h4>
+                        <h4>黑狗 Daniel</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/mon.jpg" />
+                    <div class='img-info'>
+                        <h4>LT.C Content Creator</h4>
+                        <h4>Allen Mon </h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/owen.jpg" />
+                    <div class='img-info'>
+                        <h4>今網通訊 前端工程師</h4>
+                        <h4>Owen</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/Ting.jpg" />
+                    <div class='img-info'>
+                        <h4>玉山銀行 應用系統工程師</h4>
+                        <h4>阿冠</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                <a class="fancybox">
+                    <img class="img-responsive" alt="" src="~/images/teacher/flower.jpg" />
+                    <div class='img-info'>
+                        <h4>臺北市政府資訊局 管理師</h4>
+                        <h4>Rina</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- /#service-page -->
+<!-- /#service-page -->
+
+<section id="about-page">
+    <div class="container" style="color:white;">
+        <div class="row">
+            <h1>活動議程</h1>
+            <table border=5 cellspacing="0" align="center">
+                <!--<caption>Timetable</caption>-->
+                <tr>
+                    <td align="center" height="50" width="100">
+
+                        <b>Day/Period</b>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <b>週六</b>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <b>週日</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>I</b>
+                    </td>
+                    <td colspan="3" rowspan="3" align="center" height="50">
+                        <h2 style="color:white">集<br><br>合<br></h2>
+                    </td>
+                    <td colspan="3" rowspan="3" align="center" height="50">
+                        <h2 style="color:white">採<br>草<br>莓<br></h2>
+                    </td>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>II</b>
+                        </td colspan="3">
+
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>III</b>
+                        </td colspan="3">
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>Lunch<br>12:30-13:00</b>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">豆腐街</h2>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">南庄老街</h2>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>IV</b>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">水雲吊橋</h2>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">南庄古早味<br>擂茶坊</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>V</b>
+                    </td>
+
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">石湯溫泉<br>美人湯</h2>
+                    </td>
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">向天湖</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>VI</b>
+                    </td>
+
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">【技術會議】</h2>
+                        <h6>食材推薦演算法實務</h6>
+                    </td>
+
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">【技術會議】</h2>
+                        <h6>郵局黑客松</h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" height="50" width="100">
+                        <b>VII</b>
+                    </td>
+
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">食材採購</h2>
+                        <h6>七彩龍蝦A5和牛火鍋</h6>
+                    </td>
+
+                    <td colspan="3" align="center" height="50">
+                        <h2 style="color:white">平安回程</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /#about-page -->
+<section id="service-page">
+
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-6">
+                <h1 align="left">☞活動地點</h1>
+                <h2 align="left">苗栗 - 愛在甜心草莓民宿</h2>
+                <span>364 苗栗縣苗栗市苗栗縣大湖鄉富興村七鄰八寮灣33-5號</span>
+                <h1 align="left">☞交通方式</h1>
+                <h2 align="left">自行前往</h2>
+                <span>高鐵苗栗站 12:00 p.m.- 將有專員開車迎接</span>
+                <h2 align="left">順風車&emsp;&emsp;</h2>
+                <span>1. &emsp;桃園火車站 10:00 a.m. - 配有汽車二台</span>&emsp;<span style="color:red; font-size:.8em">※已滿</span><br>
+                <span>2. &emsp;苗栗高鐵站 12:00 a.m. - 配有汽車一台</span><br>
+                <span>3. &emsp;台中高鐵站 9:30 a.m. - 配有汽車一台</span>&emsp;<span style="color:red; font-size:.8em">※已滿</span><br>
+                <h1 align="left">☞費用 : 2000元</h1>
+                <h2 align="left">住宿費 $1235</h2>
+                <span>包含：民宿一夜 + 工人智慧採草莓行程</span>
+                <h2 align="left">公費 $765  ( 多退少補制 ) </h2>
+                <span>包含：火鍋食材 + 擂茶麻薯DIY體驗</span>
+            </div>
+
+            <div class="col-lg-6 ">
+                <div class="map">
+                    <iframe style="width: 100%; height: 450px; border: 0;" ; position: relative;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14529.18225750228!2d120.87298!3d24.4405288!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc2739fcedf0efeb7!2z5oSb5Zyo55Sc5b-D!5e0!3m2!1szh-TW!2stw!4v1639292033883!5m2!1szh-TW!2stw" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+<script>
+$(document).ready(function() {
+    $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+    });
+});
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+<script src="~/Scripts/photowall.js"></script>
+

@@ -1,0 +1,200 @@
+﻿@model IEnumerable<THU_FORM.Models.SignUpList>
+@{
+    ViewBag.Title = "TOP MON 研討會";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="home-page">
+    <div class="container-fluid home-bg">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 text-center home-page">
+
+                <div class="main-logo">
+                    <img src="~/images/whitethuLOVE.png" width="300">
+                </div>
+
+                <div class=" col-sm-12">
+                    <h1>昂哥 AI 研討會</h1>
+                </div>
+
+                <!-- COUNTDOWN -->
+                <div>
+                    <h1 id="demo">
+                    </h1>
+                </div>
+                <!-- /COUNTDOWN -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /#home-page -->
+
+<section id="service-page">
+
+    <div class="container">
+        <div class="row ">
+
+            <div class="col-md-4 ">
+                <h1 align="left">AI東海，贏戰未來</h1>
+                <h2 align="left">畢業 &ne; 離別</h2>
+                <h2 align="left">考試 &times; 升學 &times; 職場</h2>
+                <h2 align="left">畢業後各奔東西</h2>
+                <h2 align="left">朋友們一同相聚分享 </h2>
+                <h2 align="left">共創美好未來</h2>
+            </div>
+
+            <div class="col-12 col-md-8 ">
+                @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+                <lottie-player src="https://assets5.lottiefiles.com/private_files/lf30_ysjb4sex.json" background="transparent" speed="1" style="width: 120%;" loop autoplay></lottie-player>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /#service-page -->
+
+<section id="about-page">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-6 col-md-3 col-sm-6 text-center service">
+                <i class="fa fa-thumbs-o-up"></i>
+                <h1 class="about-title">活動主題</h1>
+                <p>苗栗郵記&hearts;</p>
+            </div>
+            <div class="col-6 col-md-3 col-sm-6 text-center service">
+                <i class="fa fa-cutlery"></i>
+                <h1 class="about-title">用膳</h1>
+                <p>豆腐街 & 南庄老街等等</p>
+            </div>
+
+            <div class="col-6 col-md-3 col-sm-6 text-center service">
+                <i class="fa fa-clock-o"></i>
+                <h1 class="about-title">時間</h1>
+                <p>2022/3/26(六)至2022/3/27(日)</p>
+            </div>
+            <div class="col-6 col-md-3 col-sm-6 text-center service">
+                <i class="fa fa-align-justify"></i>
+                <h1 class="about-title">更多詳情</h1>
+                <p>@Html.ActionLink("議程", "Theme", "Home")</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /#about-page -->
+
+
+
+<section id="contact-page ">
+
+    <div class="container ">
+        <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
+            <div class="col-md-12 text-center">
+                <h1 class="contact-title text-center">報名聚會，把握機會</h1>
+                <div class="service-aro-icon ">
+                    <div class="service-aro-left "></div>
+                    <i class="fa fa-rocket "></i>
+                    <div class="service-aro-right "></div>
+                </div>
+                <h2>把握AI趨勢，跨領域學習</h2>
+                <div class="contact-form  ">
+                    <div class="row align-items-center">
+                        <div class="col-sm-10 your-message col-sm-offset-1 ">
+                            <div class="form-group">
+                                @if (Model != null)
+                                {
+                                    <h2 style="text-align:center;">當前成員</h2>
+
+                                    <table class="table">
+                                        <tr>
+                                            <th class="text-center">
+                                                屆
+                                            </th>
+                                            <th class="text-center">
+                                                姓名
+                                            </th>
+                                            <th class="text-center">
+                                                聯絡方式
+                                            </th>
+                                            <th class="text-center">報名人數</th>
+                                            <th class="text-center">想說的話</th>
+                                            <th></th>
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>                                               
+                                                <td>@item.TH</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Mail</td>
+                                                <td>@item.PeopleNumber</td>
+                                                <td>@item.WantToSay</td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.TH }) |
+                                                    @Html.ActionLink("Detail", "Detail", new { id = item.TH }) |
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.TH })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else
+                                {
+                                    <div class="alert">
+                                        <strong>無紀錄</strong>
+                                    </div>
+                                }
+                            </div>
+                            @*@Html.PagedListPager(Model.Books, page => Url.Action("Index", new { page }))*@
+                            <div class="contact-form">
+                                <div class="row ">
+                                    <div class="col-sm-10 your-message col-sm-offset-1 ">
+                                        <div class="form-group ">
+                                            <hr />
+                                            @Html.ActionLink("立即報名!", "Contact", "Home", new { @class = "btn btn-primary btn-lg submit-button " })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*倒數計時器*@
+<script>
+    var countDownDate = new Date("September 09, 2022 8:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + " 天 " + hours + " 時 " +
+            minutes + " 分 " + seconds + " 秒 ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "  報名截止  See you !  ";
+        }
+    }, 1000);
+</script>

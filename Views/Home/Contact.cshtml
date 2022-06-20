@@ -1,0 +1,92 @@
+﻿<style>
+    #rookie {
+        margin-top: 6%;
+    }
+</style>
+@*@if (TempData["Message"] != null)
+    {
+        <input type="hidden" class="resultValue" value="@TempData["Message"]" id="MessageBox" />
+    }*@
+
+<div class="container" style="margin-top:5%;">
+    <div class="row justify-content-around">
+        <div class="col-lg-9">
+            <br>
+            <h2>期待您的蒞臨與指導</h2>
+            <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
+                <div class="form-group">
+                    <label>第幾屆</label>
+                    <input class="form-control" type="text" name="ID" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">* 姓名</label>
+                    <input placeholder="Your Name..." type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1"
+                           required
+                           autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">* 聯絡方式</label>
+                    <input type="text" class="form-control email" name="Mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email or others" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">* 報名人數 ( 至多10人 )</label>
+                    <input name="PeopleNumber" type="number" class="form-control subject" id="subject" placeholder="number" min="1" max="10" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">想說的話</label>
+                    <textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="海鮮素、白肉素、半夜1點到早上7點素、只在民宿打麻將、想夜衝、昂哥我愛你……等等" tabindex="5"></textarea>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" required>
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        <span>* 請確認已了解</span>@Html.ActionLink("活動議程", "Theme", "Home") 🤘
+                    </label>
+                </div>
+                <div class="form-group" style="padding-top:1%; margin-bottom:5%;">
+                    <button name="submit" type="submit" class="btn btn-primary my-1"> 確定</button>
+                </div>
+            </form>
+        </div>
+
+        <!--動畫雞走路-->
+        <div class="col-lg-1" id="rookie">
+            @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+        </div>
+        @*訊息燈箱*@
+        @*<div class="modal" id="messages" tabindex="-1" role="dialog" aria-label="small ModalHead" aria-hidden="true">
+                   <div class="modal-dialog-wrap">
+                       <div class="modal-dialog modal-sm">
+                           <div class="modal-content">
+                               <div class="modal-content">
+                                   <div class="modal-body">
+                                       <h4 id="messages_content"></h4>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-success" data-dismiss="modal">確定</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+            </div>*@
+    </div>
+
+    <div class="loader">
+        <img src="" alt="" />
+    </div>
+</div>
+
+@*<script type="text/javascript">
+        $("body").on("submit", "#Form1", function () {
+            return confirm("Do you want to submit?");
+        });
+    </script>
+    @if (TempData["Message"] != null)
+    {
+        <script>
+                window.onload = function () {
+                    alert('@TempData["Message"]');
+                };
+        </script>
+    }*@
