@@ -2,40 +2,12 @@
 
     'use strict';
 
-
-    /* ---------------------------------------------- /*
-     * Countdown
-    /* ---------------------------------------------- */
-
-    //(function() {
-    //    // Countdown
-    //    // To change date, simply edit: var endDate = January 26, 2016 20:39:00";
-    //    $(function() {
-    //        var endDate = "January 26, 2016 20:39:00";
-    //        $('.tk-countdown .row').countdown({
-    //            date: endDate,
-    //            render: function(data) {
-    //                $(this.el).html('<div><div class="days"><span>' + this.leadingZeros(data.days, 2) + '</span><span>days</span></div><div class="hours"><span>' + this.leadingZeros(data.hours, 2) + '</span><span>hours</span></div></div><div class="tk-countdown-ms"><div class="minutes"><span>' + this.leadingZeros(data.min, 2) + '</span><span>minutes</span></div><div class="seconds"><span>' + this.leadingZeros(data.sec, 2) + '</span><span>seconds</span></div></div>');
-    //            }
-    //        });
-    //    });
-    //}());
-
-
-    /* ---------------------------------------------- /*
-     * Preloader
-    /* ---------------------------------------------- */
-
     (function() {
         $(window).load(function() {
             $('#pre-status').fadeOut();
             $('#st-preloader').delay(350).fadeOut('slow');
         });
     }());
-
-    /* ---------------------------------------------- /*
-     * Ajax Forms
-    /* ---------------------------------------------- */
 
     (function() {
         // E-mail validation via regular expression
@@ -44,23 +16,10 @@
             return pattern.test(emailAddress);
         };
 
-        // Ajax mailchimp
-        // Example MailChimp url: http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx
         $('#subscribe').ajaxChimp({
             language: 'es',
             url: 'http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx'
-        });
-
-        // Mailchimp translation
-        //
-        // Defaults:
-        //'submit': 'Submitting...',
-        //  0: 'We have sent you a confirmation email',
-        //  1: 'Please enter a value',
-        //  2: 'An email address must contain a single @',
-        //  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-        //  4: 'The username portion of the email address is invalid (the portion before the @: )',
-        //  5: 'This email address looks fake or invalid. Please enter a real email address'
+        });      
 
         $.ajaxChimp.translations.es = {
             'submit': 'Submitting...',
@@ -73,4 +32,9 @@
         }
 
     }());
+});
+
+
+$(document).ready(function () {
+    $('#dataTable').DataTable();
 });
