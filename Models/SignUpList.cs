@@ -24,5 +24,9 @@ namespace THU_FORM.Models
 
         //確定參加
         public byte ConfirmOK { get; set; }
+
+        //建立時間
+        public string CreateDateTime { get; set; }
     }
+
 }

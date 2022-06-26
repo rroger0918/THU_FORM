@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<THU_FORM.Models.SignUpList>
+
 @{
     ViewBag.Title = "TOP MON 研討會";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -94,13 +95,13 @@
     <div class="container ">
         <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
             <div class="col-md-12 text-center">
-                <h1 class="contact-title text-center">當前成員</h1>
+                <h1 class="contact-title text-center">報名聚會，把握機會當前成員</h1>
                 <div class="service-aro-icon ">
                     <div class="service-aro-left "></div>
                     <i class="fa fa-rocket "></i>
                     <div class="service-aro-right "></div>
                 </div>
-                <h2>報名聚會，把握機會</h2><br>
+                <h2>當前成員</h2><br>
                 <div class="contact-form  ">
                     <div class="row align-items-center">
                         <div class="col-sm-10 your-message col-sm-offset-1 ">
@@ -112,62 +113,56 @@
                                     <table class="table" id="dataTable">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">
-                                                    屆
-                                                </th>
-                                                <th class="text-center">
-                                                    姓名
-                                                </th>
-                                                <th class="text-center">
-                                                    聯絡方式
-                                                </th>
+                                                <th class="text-center">屆</th>
+                                                <th class="text-center">姓名</th>
+                                                <th class="text-center">聯絡方式</th>
                                                 <th class="text-center">報名人數</th>
                                                 <th class="text-center">想說的話</th>
+                                                <th class="text-center">報名時間</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model)
-                                            {
+                                                @foreach (var item in Model)
+                                                {
+                                            <tr>
+                                                <td>@item.TH</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Mail</td>
+                                                <td>@item.PeopleNumber</td>
+                                                <td>@item.WantToSay</td>
+                                                <td>@item.CreateDateTime</td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.TH }) |
+                                                    @Html.ActionLink("我想說 ~", "Detail", new { id = item.TH }) |
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.TH })
+                                                </td>
+                                            </tr>
 
-                                                <tr>
-                                                    <td>@item.TH</td>
-                                                    <td>@item.Name</td>
-                                                    <td>@item.Mail</td>
-                                                    <td>@item.PeopleNumber</td>
-                                                    <td>@item.WantToSay</td>
-                                                    <td>
-                                                        @Html.ActionLink("Edit", "Edit", new { id = item.TH }) |
-                                                        @Html.ActionLink("我想說 ~", "Detail", new { id = item.TH }) |
-                                                        @Html.ActionLink("Delete", "Delete", new { id = item.TH })
-                                                    </td>
-                                                </tr>
-
-                                            }
+                                                }
                                         </tbody>
-                                        </table>
+                                    </table>
                                 }
                                 else
                                 {
                                     <div class="alert">
                                         <strong>無紀錄</strong>
                                     </div>
-                                }                           
-                                </div>
+                                }
                             </div>
-                            @*@Html.PagedListPager(Model.Books, page => Url.Action("Index", new { page }))*@
-                            <div class="contact-form">
-                                <div class="row ">
-                                    <div class="col-sm-10 your-message col-sm-offset-1 ">
-                                        <div class="form-group ">
-                                            <hr />
-                                            @Html.ActionLink("立即報名!", "Contact", "Home", new { @class = "btn btn-primary btn-lg submit-button " })
-                                        </div>
+                        </div>
+                        <div class="contact-form">
+                            <div class="row ">
+                                <div class="col-sm-10 your-message col-sm-offset-1 ">
+                                    <div class="form-group ">
+                                        <hr />
+                                        @Html.ActionLink("立即報名!", "Contact", "Home", new { @class = "btn btn-primary btn-lg submit-button " })
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>                
+                    </div>
+                </div>
             </div>
         </div>
     </div>

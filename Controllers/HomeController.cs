@@ -30,21 +30,24 @@ namespace THU_FORM.Controllers
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
             FirebaseResponse response = client.Get("contact");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            Dictionary<string, dynamic> result = data.ToObject<Dictionary<string, dynamic>>();
             List<SignUpList> signUpList = new List<SignUpList>();
-            foreach (KeyValuePair<string, dynamic> element in result)
-            { 
-                signUpList.Add(new SignUpList()
-                {
-                    TH = element.Value.TH,
-                    Name = element.Value.Name,
-                    Mail = element.Value.Mail,
-                    PeopleNumber = element.Value.PeopleNumber,
-                    WantToSay = element.Value.WantToSay
-                });
+            if (data != null)
+            {
+                Dictionary<string, dynamic> result = data.ToObject<Dictionary<string, dynamic>>();
+                foreach (KeyValuePair<string, dynamic> element in result)
+                {                   
+                    signUpList.Add(new SignUpList()
+                    {
+                        TH = element.Value.TH,
+                        Name = element.Value.Name,
+                        Mail = element.Value.Mail,
+                        PeopleNumber = element.Value.PeopleNumber,
+                        WantToSay = element.Value.WantToSay,
+                        CreateDateTime = element.Value.CreateDateTime
+                    });
 
-            }
-
+                }
+            }           
             return View(signUpList);
         }
 
@@ -62,6 +65,7 @@ namespace THU_FORM.Controllers
         public ActionResult Contact(SignUpList signUpList)
         {
             string Id = Guid.NewGuid().ToString("N");
+            signUpList.CreateDateTime = DateTime.Now.ToString("yyyy-MM-dd  HH:mm");
             SetResponse response = client.Set("contact/" + Id, signUpList);
 
             //if (response.StatusCode == System.Net.HttpStatusCode.OK)
