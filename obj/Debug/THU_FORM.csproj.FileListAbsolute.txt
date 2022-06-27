@@ -95,4 +95,3 @@ C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.CoreCompileInputs.c
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.CopyComplete
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.dll
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.pdb
-C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.AssemblyReference.cache

@@ -103,7 +103,7 @@
                 <h2>當前成員</h2><br>
                 <div class="contact-form  ">
                     <div class="row align-items-center">
-                        <div class="col-sm-10 your-message col-sm-offset-1 ">
+                        <div class="col-12">
                             <div class="form-group">
                                 @if (Model != null)
                                 {
@@ -114,11 +114,11 @@
                                             <tr>
                                                 <th class="text-center">屆</th>
                                                 <th class="text-center">姓名</th>
-                                                <th class="text-center">聯絡方式</th>
+                                                @*<th class="text-center">聯絡方式</th>*@
                                                 <th class="text-center">報名人數</th>
                                                 <th class="text-center">想說的話</th>
                                                 <th class="text-center">報名時間</th>
-                                                <th></th>
+                                                @*<th></th>*@
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -127,15 +127,15 @@
                                             <tr>
                                                 <td>@item.TH</td>
                                                 <td>@item.Name</td>
-                                                <td>@item.Mail</td>
+                                                @*<td>@item.Mail</td>*@
                                                 <td>@item.PeopleNumber</td>
                                                 <td>@item.WantToSay</td>
                                                 <td>@item.CreateDateTime</td>
-                                                <td>
+                                                @*<td>
                                                     @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
                                                     @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
                                                     @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                                </td>
+                                                </td>*@
                                             </tr>
 
                                                 }

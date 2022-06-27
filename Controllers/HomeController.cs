@@ -67,7 +67,7 @@ namespace THU_FORM.Controllers
             //設定台北時間
             var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
             DateTimeOffset localServerTime = DateTimeOffset.Now;
-            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(DateTimeOffset.Now, info);
+            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
             signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
             
             string Id = Guid.NewGuid().ToString("N");
