@@ -38,6 +38,19 @@
 $(document).ready(function () {
     $('#dataTable').DataTable({
         order: [[5, 'desc']],
+        language: {
+            "emptyTable": "無紀錄",
+            "lengthMenu": "顯示前 _MENU_ 位會員🎓 ",
+            "info": "顯示第 _START_ 位到第 _END_ 位會員🎓  ，  總計 _TOTAL_ 位會員🎓  ",
+            "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 位會員🎓 ",
+            "search": "🔎搜尋:",
+            "paginate": {
+                "first": "第一頁",
+                "last": "最後一頁",
+                "next": "下一頁",
+                "previous": "前一頁"
+            }
+        }
     });
 });
 

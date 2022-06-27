@@ -63,9 +63,14 @@ namespace THU_FORM.Controllers
 
         [HttpPost]
         public ActionResult Contact(SignUpList signUpList)
-        {
+        {    
+            //設定台北時間
+            var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+            DateTimeOffset localServerTime = DateTimeOffset.Now;
+            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(DateTimeOffset.Now, info);
+            signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
+            
             string Id = Guid.NewGuid().ToString("N");
-            signUpList.CreateDateTime = DateTime.Now.ToString("yyyy-MM-dd  HH:mm");
             SetResponse response = client.Set("contact/" + Id, signUpList);
 
             //if (response.StatusCode == System.Net.HttpStatusCode.OK)

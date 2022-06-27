@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<THU_FORM.Models.SignUpList>
 
 @{
-    ViewBag.Title = "TOP MON 研討會";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +16,7 @@
                 </div>
 
                 <div class=" col-sm-12">
-                    <h1>昂哥 AI 研討會</h1>
+                    <h1>🎓 TOP MON研討會 🎓</h1>
                 </div>
 
                 <!-- COUNTDOWN -->
@@ -64,18 +63,18 @@
             <div class="col-6 col-md-3 col-sm-6 text-center service">
                 <i class="fa fa-thumbs-o-up"></i>
                 <h1 class="about-title">活動主題</h1>
-                <p>苗栗郵記&hearts;</p>
+                <p>雲林石虎  大喜喜之日&hearts;</p>
             </div>
             <div class="col-6 col-md-3 col-sm-6 text-center service">
                 <i class="fa fa-cutlery"></i>
                 <h1 class="about-title">用膳</h1>
-                <p>豆腐街 & 南庄老街等等</p>
+                <p>劍湖山 & 三好國際酒店饗宴…等等</p>
             </div>
 
             <div class="col-6 col-md-3 col-sm-6 text-center service">
                 <i class="fa fa-clock-o"></i>
                 <h1 class="about-title">時間</h1>
-                <p>2022/3/26(六)至2022/3/27(日)</p>
+                <p>2022/09/09(五) 至 2022/09/10(六)</p>
             </div>
             <div class="col-6 col-md-3 col-sm-6 text-center service">
                 <i class="fa fa-align-justify"></i>
@@ -95,7 +94,7 @@
     <div class="container ">
         <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
             <div class="col-md-12 text-center">
-                <h1 class="contact-title text-center">報名聚會，把握機會當前成員</h1>
+                <h1 class="contact-title text-center">報名聚會，把握機會</h1>
                 <div class="service-aro-icon ">
                     <div class="service-aro-left "></div>
                     <i class="fa fa-rocket "></i>
@@ -133,9 +132,9 @@
                                                 <td>@item.WantToSay</td>
                                                 <td>@item.CreateDateTime</td>
                                                 <td>
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.TH }) |
-                                                    @Html.ActionLink("我想說 ~", "Detail", new { id = item.TH }) |
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.TH })
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
+                                                    @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
                                                 </td>
                                             </tr>
 
