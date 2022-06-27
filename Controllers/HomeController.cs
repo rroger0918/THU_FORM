@@ -40,7 +40,7 @@ namespace THU_FORM.Controllers
                     {
                         TH = element.Value.TH,
                         Name = element.Value.Name,
-                        Mail = element.Value.Mail,
+                        //Mail = element.Value.Mail,
                         PeopleNumber = element.Value.PeopleNumber,
                         WantToSay = element.Value.WantToSay,
                         CreateDateTime = element.Value.CreateDateTime
