@@ -5,7 +5,7 @@ using System.Web;
 
 namespace THU_FORM.Models
 {
-    public class SignUpList
+    public class SignUpModel
     {
         //第幾屆
         public string TH { get; set; }

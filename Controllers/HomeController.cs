@@ -30,13 +30,13 @@ namespace THU_FORM.Controllers
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
             FirebaseResponse response = client.Get("contact");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            List<SignUpList> signUpList = new List<SignUpList>();
+            List<SignUpModel> signUpList = new List<SignUpModel>();
             if (data != null)
             {
                 Dictionary<string, dynamic> result = data.ToObject<Dictionary<string, dynamic>>();
                 foreach (KeyValuePair<string, dynamic> element in result)
                 {                   
-                    signUpList.Add(new SignUpList()
+                    signUpList.Add(new SignUpModel()
                     {
                         TH = element.Value.TH,
                         Name = element.Value.Name,
@@ -62,7 +62,7 @@ namespace THU_FORM.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(SignUpList signUpList)
+        public ActionResult Contact(SignUpModel signUpList)
         {    
             //設定台北時間
             var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
@@ -73,16 +73,16 @@ namespace THU_FORM.Controllers
             string Id = Guid.NewGuid().ToString("N");
             SetResponse response = client.Set("contact/" + Id, signUpList);
 
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //{
-            //    TempData["Message"] = "報名成功 期待您的蒞臨 <3";
-            //    return RedirectToAction("Contact");
-            //}
-            //else
-            //{
-            //    TempData["Message"] = "報名失敗 請洽系統管理員 : leekuantean@gmail.com";
-            return RedirectToAction("Contact");
-            //}
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                TempData["Message"] = " 🤜 報名成功 期待您的蒞臨 🤛";
+                return RedirectToAction("Contact");
+            }
+            else
+            {
+                TempData["Message"] = "報名失敗 請洽系統管理員 : leekuantean@gmail.com";
+                return RedirectToAction("Contact");
+            }
         }
 
         public ActionResult PageNotFound()
