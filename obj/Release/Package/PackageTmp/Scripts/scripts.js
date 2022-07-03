@@ -32,9 +32,26 @@
         }
 
     }());
+
+    //訊息按鈕
+    (function () {
+
+        if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
+            $("#mask").show();
+            $("#messages").show();
+        }
+
+    }());
+
+    (function () {
+        if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
+            $("#mask").show();
+            $("#messages").show();
+        }
+    }());
 });
 
-
+//DataTable
 $(document).ready(function () {
     $('#dataTable').DataTable({
         responsive: true,
@@ -54,4 +71,3 @@ $(document).ready(function () {
         }
     });
 });
-
