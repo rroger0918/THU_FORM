@@ -210,6 +210,7 @@
     <Content Include="images\teacher\yang.jpg" />
     <Content Include="images\thuimicon.png" />
     <Content Include="images\whitethu.png" />
+    <Content Include="images\whitethuGold.png" />
     <Content Include="images\whitethuLOVE.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

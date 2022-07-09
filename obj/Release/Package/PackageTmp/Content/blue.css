@@ -28,8 +28,10 @@ a,
 .service i,
 .member .member-img img,
 .contact-form .submit-button,
-.contact-form .form-control{
-	border-color: #00b9f7;
+.contact-form .form-control {
+	/*¶³ªL¹C¥Î*/
+	border-color: #b48d06;
+	/*	border-color: #00b9f7;*/
 }
 
 .submit-bt,
