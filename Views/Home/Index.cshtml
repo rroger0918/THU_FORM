@@ -16,12 +16,14 @@
                 </div>
 
                 <div class=" col-sm-12">
-                    <h1>雲林 <span style="color:red;">㊗</span> 喜喜之日 </h1>
+                    @*雲林CSS*@
+                    <h1 style="color: #b48d06 ">雲林 <span style="color:red;">㊗</span> 喜喜之日 </h1>
                 </div>
 
                 <!-- COUNTDOWN -->
                 <div>
-                    <h1 id="demo">
+                    @*雲林CSS*@
+                    <h1 id="demo" style="color: #808b8d">
                     </h1>
                 </div>
                 <!-- /COUNTDOWN -->
@@ -37,18 +39,26 @@
         <div class="row ">
 
             <div class="col-md-4 ">
-                <h1 align="left">AI東海，贏戰未來</h1>
-                <h2 align="left">畢業 &ne; 離別</h2>
-                <h2 align="left">考試 &times; 升學 &times; 職場</h2>
-                <h2 align="left">畢業後各奔東西</h2>
-                <h2 align="left">朋友們一同相聚分享 </h2>
-                <h2 align="left">共創美好未來</h2>
+                @*雲林CSS*@
+                <h1 align="left" style="color: #b48d06;">AI東海，贏取未來</h1>
+                @*<h2 align="left">畢業 &ne; 離別</h2>*@
+                @*<h2 align="left">考試 &times; 升學 &times; 職場</h2>
+                    <h2 align="left">畢業後各奔東西</h2>
+                    <h2 align="left">朋友們一同相聚分享 </h2>
+                    <h2 align="left">共創美好未來</h2>*@
+                <h2 align="left" style="border-left: 5px solid #b48d06 ;">&nbsp; 友情  &times; 愛情 &times; 親情  </h2>
+                <h2 align="left">人生能走得多遠，</h2>
+                <h2 align="left">取決於道路上與誰相伴。</h2>
+                <h2 align="left">祝福TOP MON每位新鮮人， </h2>
+                <h2 align="left">都能與伴共結美好未來。</h2>
             </div>
 
             <div class="col-12 col-md-8 ">
+                @*雲林CSS*@
                 @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-                <lottie-player src="https://assets5.lottiefiles.com/private_files/lf30_ysjb4sex.json" background="transparent" speed="1" style="width: 120%;" loop autoplay></lottie-player>
-
+                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_sjkdv9eo.json" background="transparent" speed="1" style="width: 120%;" loop autoplay></lottie-player>
+                @*AI東海的動畫*@
+                @*https://assets5.lottiefiles.com/private_files/lf30_ysjb4sex.json*@
             </div>
         </div>
     </div>
@@ -62,26 +72,27 @@
         <div class="row">
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-thumbs-o-up"></i>
-                <h1 class="about-title">活動主題</h1>
+                @*雲林CSS*@
+                <h1 class="about-title">雲林石虎  <span style="color:red;">㊗</span> 喜喜之日&hearts;</h1>
                 <p>
-                    雲林石虎  <span style="color:red;">㊗</span> 喜喜之日&hearts;<br><br>
+                    @*雲林石虎  <span style="color:red;">㊗</span> 喜喜之日&hearts;<br><br>*@
                     @Html.ActionLink("🚀 議程", "Theme", "Home")
                 </p>
             </div>
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-cutlery"></i>
-                <h1 class="about-title">用膳</h1><p>
-                    三好國際酒店<br><br>
-                    <a href="http://www.sunhaohotel.com.tw/index.php?go=metting#a" target="_blank">🚀 Elegant饗宴</a>
+                <h1 class="about-title"> 三好國際酒店</h1><p>
+                    @*三好國際酒店<br><br>*@
+                    <a href="http://www.sunhaohotel.com.tw/index.php?go=metting#a" target="_blank">🍽️ Elegant饗宴</a>
                 </p>
             </div>
 
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-clock-o"></i>
-                <h1 class="about-title">時間</h1>
+                <h1 class="about-title">2022/09/09(五) </h1>
                 <p>
-                    2022/09/09(五) 至 2022/09/10(六)<br><br>
-                    <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NDl2anZkbzg0NjdiOGFhNjF0YWRiZ21rdmogdHAyNTA0MkBt&amp;tmsrc=tp25042%40gmail.com" target="_blank">🚀 添加行程至Google行事曆</a>
+                    @*2022/09/09(五) 至 2022/09/10(六)<br><br>*@
+                    <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NDl2anZkbzg0NjdiOGFhNjF0YWRiZ21rdmogdHAyNTA0MkBt&amp;tmsrc=tp25042%40gmail.com" target="_blank">🔔 添加行程至Google行事曆</a>
                 </p>
             </div>
             @*<div class="col-6 col-md-3 col-sm-6 text-center service">
@@ -163,7 +174,8 @@
                                 <div class="col-12">
                                     <div class="form-group ">
                                         <hr />
-                                        @Html.ActionLink("立即報名!", "Contact", "Home", new { @class = "btn btn-primary btn-lg submit-button " })
+                                        @*雲林CSS*@
+                                        @Html.ActionLink("立即報名!", "Contact", "Home", new { @class = "btn btn-primary btn-lg submit-button ", style = "background-color:#b48d06;" })
                                     </div>
                                 </div>
                             </div>

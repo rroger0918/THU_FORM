@@ -16,7 +16,7 @@
                 </div>
 
                 <div class=" col-sm-12">
-                    <h1>🎓 TOP MON研討會 🎓</h1>
+                    <h1>雲林 <span style="color:red;">㊗</span> 喜喜之日 </h1>
                 </div>
 
                 <!-- COUNTDOWN -->
@@ -63,26 +63,32 @@
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-thumbs-o-up"></i>
                 <h1 class="about-title">活動主題</h1>
-                <p>雲林石虎  大喜喜之日&hearts;<br><br>
-                @Html.ActionLink("🚀 議程", "Theme", "Home")</p>
+                <p>
+                    雲林石虎  <span style="color:red;">㊗</span> 喜喜之日&hearts;<br><br>
+                    @Html.ActionLink("🚀 議程", "Theme", "Home")
+                </p>
             </div>
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-cutlery"></i>
-                <h1 class="about-title">用膳</h1><p>三好國際酒店<br><br>
-                <a href="http://www.sunhaohotel.com.tw/index.php?go=metting#a" target="_blank">🚀 Elegant饗宴</a></p>
+                <h1 class="about-title">用膳</h1><p>
+                    三好國際酒店<br><br>
+                    <a href="http://www.sunhaohotel.com.tw/index.php?go=metting#a" target="_blank">🚀 Elegant饗宴</a>
+                </p>
             </div>
 
             <div class="col-6 col-md-4 col-sm-6 text-center service">
                 <i class="fa fa-clock-o"></i>
                 <h1 class="about-title">時間</h1>
-                <p>2022/09/09(五) 至 2022/09/10(六)<br><br>
-                <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NDl2anZkbzg0NjdiOGFhNjF0YWRiZ21rdmogdHAyNTA0MkBt&amp;tmsrc=tp25042%40gmail.com" target="_blank">🚀 添加行程至Google行事曆</a></p>
+                <p>
+                    2022/09/09(五) 至 2022/09/10(六)<br><br>
+                    <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NDl2anZkbzg0NjdiOGFhNjF0YWRiZ21rdmogdHAyNTA0MkBt&amp;tmsrc=tp25042%40gmail.com" target="_blank">🚀 添加行程至Google行事曆</a>
+                </p>
             </div>
             @*<div class="col-6 col-md-3 col-sm-6 text-center service">
-                <i class="fa fa-align-justify"></i>
-                <h1 class="about-title">更多詳情</h1>
-                <p>@Html.ActionLink("議程", "Theme", "Home")</p>
-            </div>*@
+                    <i class="fa fa-align-justify"></i>
+                    <h1 class="about-title">更多詳情</h1>
+                    <p>@Html.ActionLink("議程", "Theme", "Home")</p>
+                </div>*@
         </div>
     </div>
     <!-- /.container -->
@@ -124,23 +130,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                @foreach (var item in Model)
-                                                {
-                                            <tr>
-                                                <td>@item.TH</td>
-                                                <td>@item.Name</td>
-                                                @*<td>@item.Mail</td>*@
-                                                <td>@item.PeopleNumber</td>
-                                                <td>@item.WantToSay</td>
-                                                <td>@item.CreateDateTime</td>
-                                                @*<td>
-                                                    @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
-                                                    @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
-                                                    @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                                </td>*@
-                                            </tr>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.TH</td>
+                                                    <td>@item.Name</td>
+                                                    @*<td>@item.Mail</td>*@
+                                                    <td>@item.PeopleNumber</td>
+                                                    <td>@item.WantToSay</td>
+                                                    <td>@item.CreateDateTime</td>
+                                                    @*<td>
+                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
+                                                            @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
+                                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                                        </td>*@
+                                                </tr>
 
-                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 }

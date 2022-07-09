@@ -176,6 +176,10 @@
     <Content Include="Content\photowall.css" />
     <Content Include="Content\purple.css" />
     <Content Include="Content\red.css" />
+    <Content Include="Content\Sakura\jquery-sakura.css" />
+    <Content Include="Content\Sakura\jquery-sakura.js" />
+    <Content Include="Content\Sakura\jquery-sakura.min.css" />
+    <Content Include="Content\Sakura\jquery-sakura.min.js" />
     <Content Include="Content\slate.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\yellow.css" />
