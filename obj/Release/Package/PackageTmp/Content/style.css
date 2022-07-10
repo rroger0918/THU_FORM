@@ -114,7 +114,8 @@ h6 {
 /* === Home === */
 
 #home-page {
-    background-image: url(../images/slider.jpg);
+/*    雲林遊註解掉東海教堂圖*/
+/*    background-image: url(../images/slider.jpg);*/
     position: relative;
     background-position: 50% 0;
     background-repeat: no-repeat;

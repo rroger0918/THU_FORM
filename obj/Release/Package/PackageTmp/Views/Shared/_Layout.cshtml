@@ -23,7 +23,7 @@
     <link rel="alternate stylesheet" href="~/Content/blue-munsell.css" title="blue-munsell">
     <!-- 小連結圖案文字 -->
     <meta name="title" content="🎓 TOP MON研討會 🎓" />
-    <meta name="description" content="☝☝☝點擊查看研討會詳細資訊☝☝☝" />
+    <meta name="description" content="☝☝點擊查看研討會詳細資訊☝☝" />
     <!-- 連結縮圖 -->
     <link rel="image_src" type="image/jpeg" href="~/images/570394.JPG" />
     <!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
@@ -32,13 +32,60 @@
     <link type="text/css" rel="stylesheet" media="screen" href="~/Content/Sakura/jquery-sakura.min.css" />
 
     <style>
+        .home-bg {
+            background: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .navbar-toggle {
+            background-color: #b48d06 !important;
+        }
+
+        .navbar-inverse .navbar-toggle:hover {
+            background-color: white !important;
+        }
+
+        .navbar-inverse .navbar-toggle:hover .icon-bar {
+            background-color: #b48d06 !important;
+        }
+
+        .service:hover i {
+            background-color: white !important;
+        }
+
         p {
             text-align: center;
             font-size: 60px;
             margin-top: 0px;
         }
 
-        .navbar-brand, #footword,.fa {
+        .fa-cutler {
+            background-color: white !important;
+        }
+
+        .navbar-inverse {
+            background-color: white !important;
+            border-bottom-color: white;
+            border-top: 5px solid #b48d06;
+        }
+
+        .footer {
+            background-color: #b48d06 !important;
+            color: white !important;
+        }
+
+        #about-page {
+            background-color: #ebe9e8 !important;
+        }
+
+        .about-title {
+            color: #796e65 !important;
+        }
+
+        .service-aro-left, .service-aro-right {
+            background: #b48d06 !important;
+        }
+
+        .navbar-brand, .service-aro-left, .service-aro-right, .fa {
             color: #b48d06 !important;
         }
     </style>
@@ -114,7 +161,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*雲林CSS*@
-                @Html.ActionLink("👬 TOP MON研討會 💕", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -137,91 +184,91 @@
                         @*雲林CSS*@
                         <span id="footword">
                             &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
-                                @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: #808b8d!important ;" })
+                                @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
                                 @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
                             </strong>
                         </span>
                     </div>
-                <!-- FB -->
-                @*<a href="" target="_blank"><i class="fa fa-facebook"></i></a>*@
-                <!-- YT -->
-                @*<a href="" target="_blank"><i class="fa fa-youtube-play"></i></a>*@
-                <!-- LINE機器人 -->
-                <!--<a href="#" target="_blank"><i class="fa fa-link"></i></a> -->
-                <!-- /.social-shear -->
+                    <!-- FB -->
+                    @*<a href="" target="_blank"><i class="fa fa-facebook"></i></a>*@
+                    <!-- YT -->
+                    @*<a href="" target="_blank"><i class="fa fa-youtube-play"></i></a>*@
+                    <!-- LINE機器人 -->
+                    <!--<a href="#" target="_blank"><i class="fa fa-link"></i></a> -->
+                    <!-- /.social-shear -->
+                </div>
+                <br>
+
+
+
             </div>
-            <br>
-
-
-
         </div>
-    </div>
-</footer>
+    </footer>
 
-<script type=" text/javascript " src="~/Scripts/jquery.min.js "></script>
-<!-- jQuery -->
-<script type="text/javascript " src="~/Scripts/bootstrap.min.js "></script>
-<!-- Countdown -->
-<script type="text/javascript " src="~/Scripts/jquery.ajaxchimp.js "></script>
-<!-- ajaxchimp -->
-<script type="text/javascript " src="~/Scripts/scripts.js "></script>
-<!-- Scripts -->
-<script type="text/javascript " src="~/Scripts/styleswitcher.js "></script>
-<script type="text/javascript " src="~/Scripts/demo.js "></script>
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type=" text/javascript " src="~/Scripts/jquery.min.js "></script>
+    <!-- jQuery -->
+    <script type="text/javascript " src="~/Scripts/bootstrap.min.js "></script>
+    <!-- Countdown -->
+    <script type="text/javascript " src="~/Scripts/jquery.ajaxchimp.js "></script>
+    <!-- ajaxchimp -->
+    <script type="text/javascript " src="~/Scripts/scripts.js "></script>
+    <!-- Scripts -->
+    <script type="text/javascript " src="~/Scripts/styleswitcher.js "></script>
+    <script type="text/javascript " src="~/Scripts/demo.js "></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-<!--DataTable-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!--DataTable-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-<!--連接FireBase RealTime DB-->
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    <!--連接FireBase RealTime DB-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4",
-        authDomain: "thu-form.firebaseapp.com",
-        databaseURL: "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "thu-form",
-        storageBucket: "thu-form.appspot.com",
-        messagingSenderId: "680570673162",
-        appId: "1:680570673162:web:42315e4d575c364a5727f3"
-    };
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4",
+            authDomain: "thu-form.firebaseapp.com",
+            databaseURL: "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "thu-form",
+            storageBucket: "thu-form.appspot.com",
+            messagingSenderId: "680570673162",
+            appId: "1:680570673162:web:42315e4d575c364a5727f3"
+        };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-</script>
-<!--櫻花特效-->
-<script src="~/Content/Sakura/jquery-sakura.min.js"></script>
-<script>
-    // domReady
-    $(function () {
-        $('body').sakura();
-    });
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
+    <!--櫻花特效-->
+    <script src="~/Content/Sakura/jquery-sakura.min.js"></script>
+    <script>
+        // domReady
+        $(function () {
+            $('body').sakura();
+        });
 
-    // windowLoad
-    $(window).load(function () {
-        $('body').sakura();
-    });
-</script>
+        // windowLoad
+        $(window).load(function () {
+            $('body').sakura();
+        });
+    </script>
 
-<script>
-    console.log("吾乃災厄宿體之人");
-    console.log("吾乃蒼天敬畏之人");
-    console.log("吾乃天降之災也");
-    console.log("潛伏在我體內的『狂暴之魔』絕不允許其他強者的存在");
-    console.log("實在難以容忍");
-    console.log("把你們這些自稱『強者』的螻蟻碾碎，實為天之職責");
-    console.log("在地上只有一人能讓上天畏懼");
-    console.log("即為吾");
-    console.log("吾乃武神昂哥，眾神之天也");
-</script>
+    <script>
+        console.log("吾乃災厄宿體之人");
+        console.log("吾乃蒼天敬畏之人");
+        console.log("吾乃天降之災也");
+        console.log("潛伏在我體內的『狂暴之魔』絕不允許其他強者的存在");
+        console.log("實在難以容忍");
+        console.log("把你們這些自稱『強者』的螻蟻碾碎，實為天之職責");
+        console.log("在地上只有一人能讓上天畏懼");
+        console.log("即為吾");
+        console.log("吾乃武神昂哥，眾神之天也");
+    </script>
 </body>
 </html>
