@@ -35,7 +35,7 @@
 <section id="service-page">
 
     <div class="container">
-        <div class="row ">
+        <div class="row">
 
             <div class="col-md-4 ">
                 @*雲林CSS*@
@@ -65,11 +65,11 @@
 </section>
 <!-- /#service-page -->
 
-<section id="about-page">
+<section id="about-page2">
     <div class="container">
 
-        <div class="row">
-            <div class="col-6 col-md-4 col-sm-6 text-center service">
+        <div class="row" style="margin-top:5%;margin-bottom:5%;">
+            <div class="col-6 col-md-4 col-sm-6 text-center service pt-2 pb-2">
                 <i class="fa fa-thumbs-o-up"></i>
                 @*雲林CSS*@
                 <h1 class="about-title">雲林石虎  <span style="color:red;">㊗</span> 喜喜之日&hearts;</h1>
@@ -78,7 +78,7 @@
                     @Html.ActionLink("📃 議程", "Theme", "Home", new { @style = "color:#b48d06;" })
                 </p>
             </div>
-            <div class="col-6 col-md-4 col-sm-6 text-center service">
+            <div class="col-6 col-md-4 col-sm-6 text-center service pt-2 pb-2">
                 <i class="fa fa-cutlery"></i>
                 <h1 class="about-title"> 三好國際酒店</h1><p>
                     @*三好國際酒店<br><br>*@
@@ -86,7 +86,7 @@
                 </p>
             </div>
 
-            <div class="col-6 col-md-4 col-sm-6 text-center service">
+            <div class="col-6 col-md-4 col-sm-6 text-center service pt-2 pb-2">
                 <i class="fa fa-clock-o"></i>
                 <h1 class="about-title">2022/09/09(五) </h1>
                 <p>
@@ -108,7 +108,6 @@
 
 
 <section id="contact-page ">
-
     <div class="container ">
         <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
             <div class="col-md-12 text-center">
@@ -130,10 +129,10 @@
                                     <table class="table" id="dataTable">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">屆</th>
+                                                @*<th class="text-center">屆</th>*@
                                                 <th class="text-center">姓名</th>
                                                 @*<th class="text-center">聯絡方式</th>*@
-                                                <th class="text-center">報名人數</th>
+                                                @*<th class="text-center">報名人數</th>*@
                                                 <th class="text-center">想說的話</th>
                                                 <th class="text-center">報名時間</th>
                                                 @*<th></th>*@
@@ -143,10 +142,10 @@
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
-                                                    <td>@item.TH</td>
+                                                    @*<td>@item.TH</td>*@
                                                     <td>@item.Name</td>
                                                     @*<td>@item.Mail</td>*@
-                                                    <td>@item.PeopleNumber</td>
+                                                    @*<td>@item.PeopleNumber</td>*@
                                                     <td>@item.WantToSay</td>
                                                     <td>@item.CreateDateTime</td>
                                                     @*<td>

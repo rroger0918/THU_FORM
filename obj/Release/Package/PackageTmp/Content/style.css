@@ -114,12 +114,14 @@ h6 {
 /* === Home === */
 
 #home-page {
-/*    雲林遊註解掉東海教堂圖*/
-/*    background-image: url(../images/slider.jpg);*/
+    /*    雲林遊註解掉東海教堂圖*/
+    /*    background-image: url(../images/slider.jpg);*/
+    background-image: url(../images/wedding.jpg);
     position: relative;
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-size:cover;
 }
 
 .home-bg {
