@@ -55,7 +55,7 @@
 $(document).ready(function () {
     $('#dataTable').DataTable({
         responsive: true,
-        order: [[4, 'desc']],
+        order: [[2, 'desc']],
         language: {
             "emptyTable": "無紀錄",
             "lengthMenu": "顯示前 _MENU_ 位會員🎓 ",
