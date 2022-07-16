@@ -14,7 +14,7 @@
                     <img src="~/images/whitethu.png" width="300">
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 text-center home-page" >
+            <div class="col-sm-12 col-md-12 text-center home-page">
                 <div class=" col-sm-12">
                     @*雲林CSS*@
                     <h1 style=" color:white;">雲林 <span style="color:red;">㊗</span> 喜喜之日 </h1>
@@ -133,8 +133,8 @@
                                                 <th class="text-center">姓名</th>
                                                 @*<th class="text-center">聯絡方式</th>*@
                                                 @*<th class="text-center">報名人數</th>*@
-                                            <th class="text-center">💖 祝福的話 💖 </th>
-                                                <th class="text-center">報名時間</th>
+                                                <th class="text-center">💖 祝福的話 💖 </th>
+                                                <th class="text-center" style="display: none;">報名時間</th>
                                                 @*<th></th>*@
                                             </tr>
                                         </thead>
@@ -147,7 +147,7 @@
                                                     @*<td>@item.Mail</td>*@
                                                     @*<td>@item.PeopleNumber</td>*@
                                                     <td>@item.WantToSay</td>
-                                                    <td>@item.CreateDateTime</td>
+                                                    <td style="display: none;">@item.CreateDateTime</td>
                                                     @*<td>
                                                             @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
                                                             @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |

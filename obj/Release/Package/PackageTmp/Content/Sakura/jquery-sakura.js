@@ -1,7 +1,7 @@
 // Plugin code
 (function ($) {
     /** Polyfills and prerequisites **/
-
+    
     // requestAnimationFrame Polyfill
     var lastTime    = 0;
     var vendors     = ['webkit', 'o', 'ms', 'moz', ''];
