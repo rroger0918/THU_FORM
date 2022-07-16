@@ -213,7 +213,6 @@
     <Content Include="images\Weddingjpg.jpg" />
     <Content Include="images\whitethu.png" />
     <Content Include="images\whitethuGold.png" />
-    <Content Include="images\whitethuLOVE.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

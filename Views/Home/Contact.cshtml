@@ -40,16 +40,23 @@
             <h2 style="color: #b48d06;">期待您的蒞臨與指導</h2><br>
             <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
                 <div class="form-group mb-1">
-                    <label>
-                        &nbsp; 第幾屆
-                    </label>
-                    <input class="form-control" type="text" name="TH" />
-                </div>
-                <div class="form-group mb-1">
                     <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;">&nbsp;  姓名</label>
                     <input placeholder="Your Name..." type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1"
                            required
                            autofocus>
+                </div>
+                <div class="form-group mb-1">
+                    <label style="border-left: 5px solid #b48d06 ;">
+                        &nbsp; 蒞臨身分別
+                        @*第幾屆*@
+                    </label>
+                    <select class="form-control" type="text" name="TH" required>
+                        <option value="">- 請選擇蒞臨身分別 -</option>
+                        <option value="男方親友">男方親友</option>
+                        <option value="女方親友">女方親友</option>
+                        <option value="同為雙方親友">同為雙方親友</option>
+                    </select>
+                    @*<input class="form-control" type="text" name="TH" />*@
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlInput1" style=" border-left: 5px solid #b48d06 ;">&nbsp;  聯絡方式</label>
@@ -60,8 +67,9 @@
                     <input name="PeopleNumber" type="number" class="form-control subject" id="subject" placeholder="number" min="1" max="10" value="1" required>
                 </div>
                 <div class="form-group mb-1">
-                    <label for="exampleFormControlTextarea1" >&nbsp; 我想說 ~</label>
-                    <textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="想吃OOXX餐廳、參觀OOXX景點、我吃素、只在民宿打麻將、來夜衝……等等，任何願望要求建議提議，皆歡迎對本會提出!" tabindex="5"></textarea>
+                    <label for="exampleFormControlTextarea1">&nbsp; 祝福的話 ~</label>
+                    <textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
+                    @*<textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="想吃OOXX餐廳、參觀OOXX景點、我吃素、只在民宿打麻將、來夜衝……等等，任何願望要求建議提議，皆歡迎對本會提出!" tabindex="5"></textarea>*@
                 </div>
                 <div class="form-check mb-2" style="border-left: 5px solid #b48d06 ;">
                     &nbsp;
@@ -80,7 +88,7 @@
         <!--動畫雞走路-->
         <div class="col-lg-12" id="rookie">
             @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_4p4x21lt.json" background="transparent" speed="1" style="width: 500px;" autoplay ></lottie-player>
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_4p4x21lt.json" background="transparent" speed="1" style="width: 500px;" autoplay></lottie-player>
             @*<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>*@
         </div>
 
