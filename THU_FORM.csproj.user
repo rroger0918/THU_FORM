@@ -8,7 +8,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <ProjectView>ShowAllFiles</ProjectView>
     <NameOfLastUsedPublishProfile>C:\Users\lee\source\repos\THU_FORM\Properties\PublishProfiles\ThuForm - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
