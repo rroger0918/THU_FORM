@@ -1,4 +1,5 @@
-﻿<style>
+﻿@*@model THU_FORM.Models.LoginViewModel*@
+<style>
     #rookie {
         @*雲林遊*@
         z-index:-99;
@@ -37,6 +38,10 @@
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <br>
+            @*@if (Model.Email != null)
+            {
+                <h1>@Model.Email</h1>
+            }*@
             <h2 style="color: #b48d06;">期待您的蒞臨與指導</h2><br>
             <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
                 <div class="form-group mb-1">

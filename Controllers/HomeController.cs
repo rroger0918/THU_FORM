@@ -56,8 +56,10 @@ namespace THU_FORM.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
+            //LoginViewModel loginViewModel = new LoginViewModel();
             return View();
         }
 
