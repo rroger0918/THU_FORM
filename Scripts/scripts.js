@@ -33,9 +33,8 @@
 
     }());
 
-    //訊息按鈕
+    //報名表成功訊息按鈕
     (function () {
-
         if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
             $("#mask").show();
             $("#messages").show();
@@ -43,10 +42,11 @@
 
     }());
 
+    //登入成功訊息燈箱
     (function () {
-        if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
+        if ($("#MessageBoxLogin").length > 0 && ("#MessageBoxLogin").valueOf() != null && ("#MessageBoxLogin").valueOf() != "") {
             $("#mask").show();
-            $("#messages").show();
+            $("#messagesLogin").show();
         }
     }());
 });

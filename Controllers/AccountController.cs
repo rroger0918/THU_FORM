@@ -82,7 +82,8 @@ namespace THU_FORM.Controllers
 
                         this.SignInUser(user.Email, token, false);
                         Session["UserEmail"] = user.Email;
-                        return RedirectToAction("Index", "Home");
+                        TempData["Message"] = " 🤜 登入成功 ";
+                        return View();
 
                     }
                     else

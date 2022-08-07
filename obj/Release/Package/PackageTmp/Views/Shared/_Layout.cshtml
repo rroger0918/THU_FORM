@@ -46,9 +46,9 @@
             border-color: #b48d06 !important;
         }
 
-        .navbar-inverse .navbar-toggle:hover .icon-bar {
-            background-color: #b48d06 !important;
-        }
+            .navbar-inverse .navbar-toggle:hover .icon-bar {
+                background-color: #b48d06 !important;
+            }
 
         .service:hover i {
             background-color: white !important;
@@ -77,7 +77,7 @@
 
         #about-page {
             background-color: white !important;
-            color:black;
+            color: black;
         }
 
         #about-page2 {
@@ -146,7 +146,7 @@
 
      -->
     <!--
-    有種跟東敏挑麻將
+    有種跟東閔挑麻將
             🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣
     🀆       🀗🀐🀏🀎🀍🀌🀋🀊🀉       🀅
     🀖     🀗                    🀄    🀅
@@ -179,6 +179,14 @@
                     <li>@Html.ActionLink("💎  首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home")</li>
                     <li>@Html.ActionLink("💎  報名表單", "Contact", "Home")</li>
+                    @if (@Session["UserEmail"] != null)
+                    {
+                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("💎  登入", "Login", "Account")</li>
+                    }
                 </ul>
             </div>
         </div>
