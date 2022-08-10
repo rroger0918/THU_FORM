@@ -18,7 +18,7 @@ namespace THU_FORM
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
         }
     }
 }

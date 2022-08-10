@@ -61,7 +61,7 @@ namespace THU_FORM.Controllers
             }
 
             // Info.
-            return this.View();
+            return this.View(returnUrl);
         }
         [HttpPost]
         [AllowAnonymous]
@@ -81,6 +81,7 @@ namespace THU_FORM.Controllers
                     {
 
                         this.SignInUser(user.Email, token, false);
+                        Session["UserName"] = user.DisplayName;
                         Session["UserEmail"] = user.Email;
                         TempData["Message"] = " 🤜 登入成功 ";
                         return View();
@@ -169,6 +170,7 @@ namespace THU_FORM.Controllers
         [HttpGet]
         public ActionResult LogOff()
         {
+            Session["UserName"] = null;
             Session["UserEmail"] = null;
             var ctx = Request.GetOwinContext();
             var authenticationManager = ctx.Authentication;

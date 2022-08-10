@@ -70,7 +70,21 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#CheckBox").change(function () {
+        if (this.checked) {
+            $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")
+            $('#user_name').remove();
+            //$('#user_name').removeAttr('required');
+            //$('#user_name').val('');
+            $('#user_name2').show();
+            $('#user_name2').attr('required');
+        }
+        else {
+            $('#InputDiv').html("<input type='text' class='form-control user_name' name='Name' id='user_name' tabindex='1' value='" + $('#txtSessionName').val() + "' required  autofocus readonly >")
+            $('#user_name2').remove();
+            //$('#user_name2').removeAttr('required');
+            $('#user_name').show();            ;
+        }
+    });
 });
-
-
-

@@ -33,22 +33,29 @@
 {
     <input type="hidden" class="resultValue" value="@TempData["Message"]" id="MessageBox" />
 }
+@{
+    var UserName = @Session["UserName"].ToString();
+}
 
 <div class="container" style="margin-top:5%;">
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <br>
-            @*@if (Model.Email != null)
-            {
-                <h1>@Model.Email</h1>
-            }*@
             <h2 style="color: #b48d06;">期待您的蒞臨與指導</h2><br>
             <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
+                <input type="hidden" id="txtSessionName" value="UserName" >
                 <div class="form-group mb-1">
-                    <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;">&nbsp;  姓名</label>
-                    <input placeholder="Your Name..." type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1"
-                           required
-                           autofocus>
+                    <div style="padding-right: 0px;">
+                        <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;margin-right:3%;">&nbsp;  姓名</label>
+                        <input type="checkbox" name="scales" value="1" id="CheckBox">
+                        <label for="scales">或使用暱稱</label>
+                    </div>
+                    <div id="InputDiv">
+                        <input type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1" value="@Session["UserName"].ToString()"
+                               required autofocus readonly>
+                        <input placeholder="乂卍煞采o戀羽卍乂" type="text" class="form-control user_name" name="Name" id="user_name2" tabindex="1"
+                               autofocus hidden>
+                    </div>
                 </div>
                 <div class="form-group mb-1">
                     <label style="border-left: 5px solid #b48d06 ;">
@@ -65,7 +72,7 @@
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlInput1" style=" border-left: 5px solid #b48d06 ;">&nbsp;  聯絡方式</label>
-                    <input type="text" class="form-control email" name="Mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email or others" value= @Session["UserEmail"] required>
+                    <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" value=@Session["UserEmail"] required readonly>
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlSelect1" style="border-left: 5px solid #b48d06 ;">&nbsp;  報名人數 ( 至多10人 )</label>
@@ -73,12 +80,12 @@
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlTextarea1">&nbsp; 祝福的話 ~</label>
-                    <textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
+                    <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
                     @*<textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="想吃OOXX餐廳、參觀OOXX景點、我吃素、只在民宿打麻將、來夜衝……等等，任何願望要求建議提議，皆歡迎對本會提出!" tabindex="5"></textarea>*@
                 </div>
                 <div class="form-check mb-2" style="border-left: 5px solid #b48d06 ;">
                     &nbsp;
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" required>
+                    <input class="form-check-input" name="ConfirmOK" type="checkbox" id="flexCheckIndeterminate" value="1" required>
                     <label class="form-check-label" for="flexCheckIndeterminate">
                         <span>&nbsp; 請確認已了解</span>@Html.ActionLink("活動議程", "Theme", "Home") 🤘
                     </label>
@@ -124,7 +131,7 @@
 
     @*email.js 用*@
     @*<div class="loader">
-        <img src="" alt="" />
-    </div>*@
+            <img src="" alt="" />
+        </div>*@
 </div>
 

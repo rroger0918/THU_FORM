@@ -7,11 +7,14 @@ namespace THU_FORM.Models
 {
     public class SignUpModel
     {
-        //第幾屆
+        //身分別
         public string TH { get; set; }
 
         //姓名
         public string Name { get; set; }
+
+        //是否為匿名
+        public byte scales { get; set; }        
 
         //信箱
         public string Mail { get; set; }
