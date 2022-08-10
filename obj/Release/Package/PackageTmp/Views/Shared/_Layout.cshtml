@@ -178,7 +178,7 @@
                     @*雲林CSS*@
                     <li>@Html.ActionLink("💎  首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home")</li>
-                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("💎  報名表單",  "Contact", "Home")</li>
                     @if (@Session["UserEmail"] != null)
                     {
                         <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account")</li>

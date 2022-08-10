@@ -1,4 +1,8 @@
 ﻿using Firebase.Auth;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
@@ -17,6 +21,21 @@ namespace THU_FORM.Controllers
         private static string ApiKey = "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4";
         //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
+        readonly IFirebaseClient client;
+        public AccountController()
+        {
+            IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
+            {
+                AuthSecret = "TszB5Hmop1Jb64FoePa2ITKEbYmL39ZzNavOVQvA",
+                BasePath = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            };
+
+            client = new FirebaseClient(config);
+        }
+
+
+
+
         // GET: Account
         public ActionResult Regist()
         {
@@ -29,7 +48,7 @@ namespace THU_FORM.Controllers
         {
             try
             {
-                var auth = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+                var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
                 var a = await auth.CreateUserWithEmailAndPasswordAsync(model.Email, model.Password, model.Name, true);
                 ModelState.AddModelError(string.Empty, "Please Verify your email then login Plz.");
@@ -73,7 +92,7 @@ namespace THU_FORM.Controllers
                 // Verification.
                 if (ModelState.IsValid)
                 {
-                    var auth = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
+                    var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
                     var ab = await auth.SignInWithEmailAndPasswordAsync(model.Email, model.Password);
                     string token = ab.FirebaseToken;
                     var user = ab.User;
@@ -176,6 +195,36 @@ namespace THU_FORM.Controllers
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login", "Account");
+        }
+
+        [Authorize]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(SignUpModel signUpList)
+        {
+            //設定台北時間
+            var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+            DateTimeOffset localServerTime = DateTimeOffset.Now;
+            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
+            signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
+
+            string Id = Guid.NewGuid().ToString("N");
+            SetResponse response = client.Set("contact/" + Id, signUpList);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                TempData["Message"] = " 🤜 報名成功 期待您的蒞臨 🤛";
+                return RedirectToAction("Contact");
+            }
+            else
+            {
+                TempData["Message"] = "報名失敗 請洽系統管理員 : leekuantean@gmail.com";
+                return RedirectToAction("Contact");
+            }
         }
 
     }

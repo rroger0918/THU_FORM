@@ -33,9 +33,8 @@
 
     }());
 
-    //訊息按鈕
+    //報名表成功訊息按鈕
     (function () {
-
         if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
             $("#mask").show();
             $("#messages").show();
@@ -43,10 +42,11 @@
 
     }());
 
+    //登入成功訊息燈箱
     (function () {
-        if ($("#MessageBox").length > 0 && ("#MessageBox").valueOf() != null && ("#MessageBox").valueOf() != "") {
+        if ($("#MessageBoxLogin").length > 0 && ("#MessageBoxLogin").valueOf() != null && ("#MessageBoxLogin").valueOf() != "") {
             $("#mask").show();
-            $("#messages").show();
+            $("#messagesLogin").show();
         }
     }());
 });
@@ -70,7 +70,18 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#CheckBox").change(function () {
+        if (this.checked) {
+            $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")
+            $('#user_name').remove();
+            $('#user_name2').show();
+            $('#user_name2').attr('required');
+        }
+        else {
+            $('#InputDiv').html("<input type='text' class='form-control user_name' name='Name' id='user_name' tabindex='1' value='" + $('#txtSessionName').val() + "' required  autofocus readonly >")
+            $('#user_name2').remove();
+            $('#user_name').show();          
+        }
+    });
 });
-
-
-
