@@ -456,7 +456,6 @@
     <Content Include="Views\Home\Theme.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Regist.cshtml" />
-    <Content Include="Views\Account\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

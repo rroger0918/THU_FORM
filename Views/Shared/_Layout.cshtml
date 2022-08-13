@@ -161,9 +161,8 @@
             <div class="preload-placeholder"></div>
         </div>
     </div>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -178,7 +177,7 @@
                     @*雲林CSS*@
                     <li>@Html.ActionLink("💎  首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home")</li>
-                    <li>@Html.ActionLink("💎  報名表單",  "Contact", "Home")</li>
+                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home")</li>
                     @if (@Session["UserEmail"] != null)
                     {
                         <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account")</li>
@@ -193,32 +192,26 @@
     </div>
 
     @RenderBody()
+
+
     <footer class="footer">
-        <div class="container   text-right ">
-            <div class="row">
-                <!-- 圖標網址 https://fontawesome.com/v4.7.0/icons/ -->
+        <div class="container-fluid">
+            <div class="text-right ">
                 <div class="row">
-                    <div class="col-sm-12 social-shear text-center">
-                        @*雲林CSS*@
-                        <span id="footword">
-                            &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
-                                @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
-                                @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
-                            </strong>
-                        </span>
+                    <!-- 圖標網址 https://fontawesome.com/v4.7.0/icons/ -->
+                    <div class="row">
+                        <div class="col-sm-12 social-shear text-center">
+                            @*雲林CSS*@
+                            <span id="footword">
+                                &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
+                                    @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
+                                    @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
+                                </strong>
+                            </span>
+                        </div>
                     </div>
-                    <!-- FB -->
-                    @*<a href="" target="_blank"><i class="fa fa-facebook"></i></a>*@
-                    <!-- YT -->
-                    @*<a href="" target="_blank"><i class="fa fa-youtube-play"></i></a>*@
-                    <!-- LINE機器人 -->
-                    <!--<a href="#" target="_blank"><i class="fa fa-link"></i></a> -->
-                    <!-- /.social-shear -->
+                    <br>
                 </div>
-                <br>
-
-
-
             </div>
         </div>
     </footer>

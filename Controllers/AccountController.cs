@@ -78,10 +78,12 @@ namespace THU_FORM.Controllers
                 // Info
                 Console.Write(ex);
             }
-
-            // Info.
-            return this.View(returnUrl);
+            // 尚未登入，到登入頁
+            if( returnUrl == "/Home/Contact") { ViewData["NeedLoginMessage"] = "欲填寫報名表，請您先登入呦呦"; }
+           
+            return View("Login");
         }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -195,37 +197,7 @@ namespace THU_FORM.Controllers
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login", "Account");
-        }
-
-        [Authorize]
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Contact(SignUpModel signUpList)
-        {
-            //設定台北時間
-            var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
-            DateTimeOffset localServerTime = DateTimeOffset.Now;
-            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
-            signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
-
-            string Id = Guid.NewGuid().ToString("N");
-            SetResponse response = client.Set("contact/" + Id, signUpList);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                TempData["Message"] = " 🤜 報名成功 期待您的蒞臨 🤛";
-                return RedirectToAction("Contact");
-            }
-            else
-            {
-                TempData["Message"] = "報名失敗 請洽系統管理員 : leekuantean@gmail.com";
-                return RedirectToAction("Contact");
-            }
-        }
+        }      
 
     }
 }

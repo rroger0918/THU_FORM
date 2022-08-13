@@ -1,4 +1,5 @@
-﻿@*@model THU_FORM.Models.LoginViewModel*@
+﻿@model THU_FORM.Models.LoginViewModel
+
 <style>
     #rookie {
         @*雲林遊*@
@@ -40,7 +41,7 @@
             <br>
             <h2 style="color: #b48d06;">期待您的蒞臨與指導</h2><br>
             <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
-                <input type="hidden" id="txtSessionName" value= "@Session["UserName"].ToString()">
+                <input type="hidden" id="txtSessionName" value="@Session["UserName"].ToString()">
                 <div class="form-group mb-1">
                     <div style="padding-right: 0px;">
                         <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;margin-right:3%;">&nbsp;  姓名</label>
@@ -109,7 +110,7 @@
                         <h5 class="modal-title">
                             🎓 TOP MON研討會 🎓
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="cancelPage" aria-hidden="true">@Html.ActionLink(HttpUtility.HtmlDecode("&times;"),  "Contact", "Home")</span>
+                                <span class="cancelPage" aria-hidden="true">@Html.ActionLink(HttpUtility.HtmlDecode("&times;"), "Contact", "Home")</span>
                             </button>
                         </h5>
                     </div>
@@ -118,7 +119,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">  @Html.ActionLink("前往首頁 👌🏼", "Index", "Home", new { style = "color:white;padding:1%;" })</button>
-                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次報名🖖🏼",  "Contact", "Home", new { style = "padding:1%;" }) </button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次報名🖖🏼", "Contact", "Home", new { style = "padding:1%;" }) </button>
                     </div>
                 </div>
             </div>

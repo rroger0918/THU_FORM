@@ -25,6 +25,8 @@ namespace THU_FORM.Controllers
 
             client = new FirebaseClient(config);
         }
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
