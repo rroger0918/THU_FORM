@@ -17,12 +17,13 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
+
+            <h4 class="ml-5" style="margin-top:15%;">TOP MON 會員登入</h4>
             @if (ViewData["NeedLoginMessage"] != null)
             {
                 <span style="color:red;">@ViewData["NeedLoginMessage"]</span>
                 ViewData["NeedLoginMessage"] = null;
             }
-            <h4 class="ml-5" style="margin-top:15%;">TOP MON 會員登入</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">

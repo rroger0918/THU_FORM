@@ -51,6 +51,7 @@ namespace THU_FORM.Controllers
                 }
             }           
             return View(signUpList);
+        
         }
 
         public ActionResult Theme()

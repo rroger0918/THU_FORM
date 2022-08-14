@@ -98,6 +98,13 @@
         .navbar-brand, .service-aro-left, .service-aro-right, .fa {
             color: #b48d06 !important;
         }
+        #hoverAction1:hover, #hoverAction2:hover, #hoverAction3:hover, #hoverAction4:hover, #hoverAction5:hover {
+            color: #b48d06 !important;
+        }
+        #hoverAction1:active, #hoverAction2:active, #hoverAction3:active, #hoverAction4:active, #hoverAction5:active {
+            color: #b48d06 !important;
+            font-weight: bold !important;
+        }
     </style>
 </head>
 <body>
@@ -161,9 +168,8 @@
             <div class="preload-placeholder"></div>
         </div>
     </div>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -171,21 +177,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*雲林CSS*@
-                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home",new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav justify-content-center">
                     @*雲林CSS*@
-                    <li>@Html.ActionLink("💎  首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("💎  議程", "Theme", "Home")</li>
-                    <li>@Html.ActionLink("💎  報名表單",  "Contact", "Home")</li>
+                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", new { @id = "hoverAction1" })</li>
+                    <li>@Html.ActionLink("💎  議程", "Theme", "Home", new { @id = "hoverAction2" })</li>
+                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", new { @id = "hoverAction3" })</li>
                     @if (@Session["UserEmail"] != null)
                     {
-                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account")</li>
+                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account", new { @id = "hoverAction4" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("💎  登入", "Login", "Account")</li>
+                        <li>@Html.ActionLink("💎  登入", "Login", "Account", new { @id = "hoverAction5" })</li>
                     }
                 </ul>
             </div>
@@ -193,32 +199,26 @@
     </div>
 
     @RenderBody()
+
+
     <footer class="footer">
-        <div class="container   text-right ">
-            <div class="row">
-                <!-- 圖標網址 https://fontawesome.com/v4.7.0/icons/ -->
+        <div class="container-fluid">
+            <div class="text-right ">
                 <div class="row">
-                    <div class="col-sm-12 social-shear text-center">
-                        @*雲林CSS*@
-                        <span id="footword">
-                            &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
-                                @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
-                                @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
-                            </strong>
-                        </span>
+                    <!-- 圖標網址 https://fontawesome.com/v4.7.0/icons/ -->
+                    <div class="row">
+                        <div class="col-sm-12 social-shear text-center">
+                            @*雲林CSS*@
+                            <span id="footword">
+                                &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
+                                    @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
+                                    @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
+                                </strong>
+                            </span>
+                        </div>
                     </div>
-                    <!-- FB -->
-                    @*<a href="" target="_blank"><i class="fa fa-facebook"></i></a>*@
-                    <!-- YT -->
-                    @*<a href="" target="_blank"><i class="fa fa-youtube-play"></i></a>*@
-                    <!-- LINE機器人 -->
-                    <!--<a href="#" target="_blank"><i class="fa fa-link"></i></a> -->
-                    <!-- /.social-shear -->
+                    <br>
                 </div>
-                <br>
-
-
-
             </div>
         </div>
     </footer>
