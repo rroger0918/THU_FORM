@@ -103,7 +103,7 @@ namespace THU_FORM.Controllers
 
                         this.SignInUser(user.Email, token, false);
                         Session["UserName"] = user.DisplayName;
-                        
+                        Session["UserEmail"] = user.Email;
                         TempData["Message"] = " 🤜 登入成功 ";
                         return View();
 

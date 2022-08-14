@@ -187,7 +187,7 @@
                     <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
                     @if (@Session["UserName"] != null)
                     {
-                        <li>@Html.ActionLink("🙋  " + @Session["UserName"] + "，登出", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
+                        <li>@Html.ActionLink("🙋 " + @Session["UserName"] + " ，登出帳戶 ~", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
                     }
                     else
                     {
