@@ -182,16 +182,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav justify-content-center">
                     @*雲林CSS*@
-                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", new { @id = "hoverAction1" })</li>
-                    <li>@Html.ActionLink("💎  議程", "Theme", "Home", new { @id = "hoverAction2" })</li>
-                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", new { @id = "hoverAction3" })</li>
+                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", null,new { @id = "hoverAction1" })</li>
+                    <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
+                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
                     @if (@Session["UserEmail"] != null)
                     {
-                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account", new { @id = "hoverAction4" })</li>
+                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("💎  登入", "Login", "Account", new { @id = "hoverAction5" })</li>
+                        <li>@Html.ActionLink("💎  登入", "Login", "Account", null, new { @id = "hoverAction5" })</li>
                     }
                 </ul>
             </div>
