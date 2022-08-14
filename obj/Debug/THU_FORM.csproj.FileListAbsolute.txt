@@ -115,8 +115,8 @@ C:\Users\lee\source\repos\THU_FORM\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\lee\source\repos\THU_FORM\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\lee\source\repos\THU_FORM\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.App.config
-C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.AssemblyReference.cache
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.CoreCompileInputs.cache
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.CopyComplete
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.dll
 C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.pdb
+C:\Users\lee\source\repos\THU_FORM\obj\Debug\THU_FORM.csproj.AssemblyReference.cache

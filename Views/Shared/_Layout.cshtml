@@ -185,13 +185,13 @@
                     <li>@Html.ActionLink("💎  首頁", "Index", "Home", null,new { @id = "hoverAction1" })</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
                     <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
-                    @if (@Session["UserEmail"] != null)
+                    @if (@Session["UserName"] != null)
                     {
-                        <li>@Html.ActionLink("💎  " + @Session["UserEmail"] + "  登出", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
+                        <li>@Html.ActionLink("🙋  " + @Session["UserName"] + "，登出", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("💎  登入", "Login", "Account", null, new { @id = "hoverAction5" })</li>
+                        <li>@Html.ActionLink("🙋  登入", "Login", "Account", null, new { @id = "hoverAction5" })</li>
                     }
                 </ul>
             </div>
@@ -201,7 +201,7 @@
     @RenderBody()
 
 
-    <footer class="footer">
+    <footer class="footer navbar-static-bottom">
         <div class="container-fluid">
             <div class="text-right ">
                 <div class="row">
@@ -211,7 +211,7 @@
                             @*雲林CSS*@
                             <span id="footword">
                                 &copy; 2021 <strong></strong>. All Rights Reserved. Designed by &nbsp; <strong>
-                                    @Html.ActionLink("Mon Bro", "ManagePage", "Home", new { @style = "color: white!important ;" })
+                                    @Html.ActionLink("Mon Bro", "ManagePage", "Home", null, new { @style = "color: white!important ;" })
                                     @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
                                 </strong>
                             </span>

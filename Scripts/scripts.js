@@ -70,7 +70,7 @@ $(document).ready(function () {
             }
         }
     });
-
+    //報名表單匿名
     $("#CheckBox").change(function () {
         if (this.checked) {
             $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")

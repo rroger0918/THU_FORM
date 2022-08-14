@@ -12,12 +12,12 @@ namespace THU_FORM.Models
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "信箱帳號")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "密碼")]
         public string Password { get; set; }
     }
 }

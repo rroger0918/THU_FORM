@@ -12,17 +12,17 @@ namespace THU_FORM.Models
         public int id { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "姓名")]
         public string Name { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(Name = "註冊信箱")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "密碼")]
         public string Password { get; set; }
     }
 }

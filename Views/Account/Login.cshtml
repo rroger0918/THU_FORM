@@ -10,7 +10,7 @@
 }
 
 
-<div class="container" style="margin-top:5%;width:90vw;">
+<div class="container" style="margin-top:75px;width:90vw;">
 
     @using (Html.BeginForm())
     {
@@ -18,7 +18,7 @@
 
         <div class="form-horizontal">
 
-            <h4 class="ml-5" style="margin-top:15%;">TOP MON 會員登入</h4>
+            <h2 class="ml-5" style="margin-top:15%;"><span style="border-left: 5px solid #b48d06 ;">&nbsp;T</span>OP MON 會員登入</h2>
             @if (ViewData["NeedLoginMessage"] != null)
             {
                 <span style="color:red;">@ViewData["NeedLoginMessage"]</span>
@@ -44,8 +44,10 @@
 
             <div class="d-grid gap-2 form-group">
                 <div class="col-md-offset-2 col-md-10 text-center">
-                    <br><input type="submit" value="登入" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" /><div><a href="#">忘記帳號?</a></div><hr />
-                    @Html.ActionLink("註冊", "Regist", "Account", new { @class = "btn btn-default", style = "width:100%" })
+                    <br><input type="submit" value="登入" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" />
+                    @*<div><a href="#">忘記帳號?</a></div>*@
+                    <hr />
+                    @Html.ActionLink("註冊", "Regist", "Account", null, new { @class = "btn btn-default", style = "width:100%" })
                 </div>
             </div>
             @*<div class="form-group">
@@ -57,7 +59,7 @@
         </div>
     }
     <!--動畫雞走路-->
-    <div class="col-lg-12 mt-3" id="rookie">
+    <div class="col-lg-12 mt-3" id="rookie" style="margin-top:15%;">
         <div class="row text-center">
             @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
             <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_kotaolcw.json" background="transparent" speed="1" style="width:90vw;margin-top:20%;" autoplay></lottie-player>
@@ -65,7 +67,7 @@
         </div>
     </div>
     @*訊息燈箱*@
-    <div class="modal" id="messagesLogin" tabindex="-1" role="dialog">
+    <div class="modal" style="margin-top: 65%;" id="messagesLogin" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -80,8 +82,16 @@
                     <h4 id="messages_content">@TempData["Message"]</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">  @Html.ActionLink("返回首頁 👌🏼", "Index", "Home", null, new { style = "color:white;padding:1%;" })</button>
-                    <button type="button" class="btn btn-secondary">@Html.ActionLink("填寫報名表單🖖🏼", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
+                    @if (@TempData["Message"] != null && @TempData["Message"].ToString() == " 🤜 登入成功 ")
+                    {
+                        <button type="button" class="btn btn-primary">  @Html.ActionLink("返回首頁 👌🏼", "Index", "Home", null, new { style = "color:white;padding:1%;" })</button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("填寫報名表單 🖖🏼", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次登入 👌🏼", "Login", "Account", null, new { style = "padding:1%;" }) </button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("註冊帳號 🖖🏼", "Regist", "Account", null, new { style = "padding:1%;" }) </button>
+                    }
                 </div>
             </div>
         </div>

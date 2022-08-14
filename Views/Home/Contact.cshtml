@@ -30,9 +30,10 @@
         border-color: white !important;
     }
 </style>
+
 @if (TempData["Message"] != null)
 {
-    <input type="hidden" class="resultValue" value="@TempData["Message"]" id="MessageBox" />
+    <input type="hidden" class="resultValue" value= "@TempData["Message"]" id="MessageBox" />
 }
 
 <div class="container" style="margin-top:5%;">
@@ -118,8 +119,8 @@
                         <h4 id="messages_content">@TempData["Message"]</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">  @Html.ActionLink("前往首頁 👌🏼", "Index", "Home", new { style = "color:white;padding:1%;" })</button>
-                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次報名🖖🏼", "Contact", "Home", new { style = "padding:1%;" }) </button>
+                        <button type="button" class="btn btn-primary">  @Html.ActionLink("前往首頁 👌🏼", "Index", "Home", null, new { style = "color:white;padding:1%;" })</button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次報名🖖🏼", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
                     </div>
                 </div>
             </div>

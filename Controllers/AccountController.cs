@@ -51,11 +51,11 @@ namespace THU_FORM.Controllers
                 var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
                 var a = await auth.CreateUserWithEmailAndPasswordAsync(model.Email, model.Password, model.Name, true);
-                ModelState.AddModelError(string.Empty, "Please Verify your email then login Plz.");
+                ModelState.AddModelError(string.Empty, "驗證信傳送至您的信箱📬，敬請協助驗證，謝謝♥");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, "系統錯誤，麻煩您重新操作一次，謝謝😥");
             }
 
             return View();
@@ -103,7 +103,7 @@ namespace THU_FORM.Controllers
 
                         this.SignInUser(user.Email, token, false);
                         Session["UserName"] = user.DisplayName;
-                        Session["UserEmail"] = user.Email;
+                        
                         TempData["Message"] = " 🤜 登入成功 ";
                         return View();
 
@@ -117,6 +117,7 @@ namespace THU_FORM.Controllers
             }
             catch (Exception ex)
             {
+                TempData["Message"] = "帳號或密碼錯誤😱，登入失敗";
                 // Info
                 Console.Write(ex);
             }
@@ -197,7 +198,32 @@ namespace THU_FORM.Controllers
             var authenticationManager = ctx.Authentication;
             authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login", "Account");
-        }      
+        }
+
+        //// 密碼重設頁(自己寫的還沒測試)
+        //public ActionResult ReSetPassword()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> ReSetPassword(RegistModel model)
+        //{
+        //    try
+        //    {
+        //        var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
+
+        //        await auth.SendPasswordResetEmailAsync(model.Email);
+        //        ModelState.AddModelError(string.Empty, "密碼重設信件已傳送至您的信箱📬，謝謝♥");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError(string.Empty, "系統錯誤，麻煩您重新操作一次，謝謝😥");
+        //    }
+
+        //    return View();
+        //}
 
     }
 }

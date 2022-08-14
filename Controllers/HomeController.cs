@@ -61,7 +61,7 @@ namespace THU_FORM.Controllers
 
         [Authorize]
         public ActionResult Contact()
-        {
+        {            
             return View();
         }
 
