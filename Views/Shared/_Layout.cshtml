@@ -98,9 +98,11 @@
         .navbar-brand, .service-aro-left, .service-aro-right, .fa {
             color: #b48d06 !important;
         }
+
         #hoverAction1:hover, #hoverAction2:hover, #hoverAction3:hover, #hoverAction4:hover, #hoverAction5:hover {
             color: #b48d06 !important;
         }
+
         #hoverAction1:active, #hoverAction2:active, #hoverAction3:active, #hoverAction4:active, #hoverAction5:active {
             color: #b48d06 !important;
             font-weight: bold !important;
@@ -177,17 +179,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*雲林CSS*@
-                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home",new { @class = "navbar-brand" })
+                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home", new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav justify-content-center">
                     @*雲林CSS*@
-                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", null,new { @id = "hoverAction1" })</li>
+                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", null, new { @id = "hoverAction1" })</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
                     <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
-                    @if (@Session["UserName"] != null)
+                    @if (this.Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("🙋 " + @Session["UserName"] + " ，登出帳戶 ~", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
+                        <li>@Html.ActionLink("🙋 " + @Session["UserName"] + " 登出帳戶 ~", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
                     }
                     else
                     {
@@ -200,7 +202,7 @@
 
     @RenderBody()
 
-
+    @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
     <footer class="footer navbar-static-bottom">
         <div class="container-fluid">
             <div class="text-right ">
@@ -222,6 +224,8 @@
             </div>
         </div>
     </footer>
+    @*<input type="submit" value="古狗登入" id="googlelogin" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" />
+        <input type="submit" value="古狗登出" id="googlesignOcut" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" />*@
 
     <script type=" text/javascript " src="~/Scripts/jquery.min.js "></script>
     <!-- jQuery -->
@@ -241,9 +245,90 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    @*FireBase引入檔*@
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4",
+            authDomain: "thu-form.firebaseapp.com",
+            databaseURL: "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "thu-form",
+            storageBucket: "thu-form.appspot.com",
+            messagingSenderId: "680570673162",
+            appId: "1:680570673162:web:42315e4d575c364a5727f3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        @*const auth = getAuth(app);
+        const provider = new GoogleAuthProvider(app);
+
+        googlelogin.addEventListener('click', (e) => {
+            // sign in with popup tab
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    // The signed-in user info.
+                    const user = result.user;
+
+                    alert(user.displayName + '登入成功');
+                    $('#googleAccount').append('<span>' + user.displayName + '<span>');
+                    // ...
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                    alert(errorMessage + '登入失敗');
+                });
+        });
+
+        googlesignOcut.addEventListener('click', (e) => {
+            signOut(auth).then(() => {
+                alert('登出成功');
+            }).catch((error) => {
+                alert('登出失敗');
+            });
+        });
+
+        //登入狀態維持
+        setPersistence(auth, browserSessionPersistence)
+            .then(() => {
+                // Existing and future Auth states are now persisted in the current
+                // session only. Closing the window would clear any existing state even
+                // if a user forgets to sign out.
+                // ...
+                // New sign-in will be persisted with session persistence.
+                firebase.auth.Auth.Persistence.LOCAL
+                return signInWithEmailAndPassword(auth, email, password);
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });*@
+    </script>
+    @*<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>*@
+
 
     <!--連接FireBase RealTime DB-->
-    <script type="module">
+    <!--<script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
@@ -262,7 +347,25 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-    </script>
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        //估狗登入
+        // google
+        var providerG = new firebase.auth.GoogleAuthProvider();
+
+        var btnGooglePopup = document.getElementById('googleSingUpPopup');
+
+        btnGooglePopup.onclick = function () {
+            firebase.auth().signInWithPopup(providerG).then(function (result) {
+                // 可以獲得 Google 提供 token，token可透過 Google API 獲得其他數據。
+                var token = result.credential.accessToken;
+                var user = result.user;
+                console.log(user)
+            });
+        }
+
+    </script>-->
     <!--櫻花特效-->
     <script src="~/Content/Sakura/jquery-sakura.min.js"></script>
     <script>
@@ -272,9 +375,9 @@
         });
 
         // windowLoad
-        $(function () {
+        @*$(function () {
             $('body').sakura();
-        });
+        });*@
     </script>
 
     <script>

@@ -70,6 +70,26 @@ $(document).ready(function () {
             }
         }
     });
+
+    //管理者的DataTable
+    $('#dataTableManager').DataTable({
+        responsive: true,
+        order: [[5, 'desc']],
+        language: {
+            "emptyTable": "無紀錄",
+            "lengthMenu": "顯示前 _MENU_ 位會員🎓 ",
+            "info": " 總計 _TOTAL_ 位會員🎓  ",
+            "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 位會員🎓 ",
+            "search": "🔎搜尋:",
+            "paginate": {
+                "first": "第一頁",
+                "last": "最後一頁",
+                "next": "下一頁",
+                "previous": "前一頁"
+            }
+        }
+    });
+
     //報名表單匿名
     $("#CheckBox").change(function () {
         if (this.checked) {

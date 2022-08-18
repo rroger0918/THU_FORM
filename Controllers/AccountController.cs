@@ -20,6 +20,8 @@ namespace THU_FORM.Controllers
     {
         private static string ApiKey = "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4";
         //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
+        FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));        
+
 
         readonly IFirebaseClient client;
         public AccountController()
@@ -70,7 +72,7 @@ namespace THU_FORM.Controllers
                 // Verification.
                 if (this.Request.IsAuthenticated)
                 {
-                    return View("Index");
+                    return this.RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception ex)
@@ -94,13 +96,12 @@ namespace THU_FORM.Controllers
                 // Verification.
                 if (ModelState.IsValid)
                 {
-                    var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
+                    //var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
                     var ab = await auth.SignInWithEmailAndPasswordAsync(model.Email, model.Password);
                     string token = ab.FirebaseToken;
                     var user = ab.User;
                     if (token != "")
                     {
-
                         this.SignInUser(user.Email, token, false);
                         Session["UserName"] = user.DisplayName;
                         Session["UserEmail"] = user.Email;

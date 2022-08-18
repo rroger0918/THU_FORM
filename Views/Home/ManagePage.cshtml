@@ -1,99 +1,77 @@
-﻿@*@model IEnumerable<ThuForm.Models.RegistForm>*@
+﻿@model IEnumerable<THU_FORM.Models.SignUpModel>
 @{
     ViewBag.Title = "Home Page";
 }
-
-
-
 
 
 <section id="contact-page ">
 
     <div class="container ">
         <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
-            <div class="col-md-12 ">                
-                    <div class="contact-form  ">
-                        <div class="row align-items-center">
-                            <div class="col-sm-10 your-message col-sm-offset-1 ">
-                                <div class="form-group">
-                                    @if (Model.Count() == 0)
-                                    {
-                                        <div class="alert" alert-info>
-                                            <strong>無紀錄</strong>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <br>
-                                        <h2>當前成員</h2>
-                                        <ul class="nav navbar-nav">
-                                            <li>@Html.ActionLink("管理員登出", "Logout", "Home")</li>
-                                        </ul>
-
-
-                                        <table class="table">
+            <div class="col-md-12 ">
+                <div class="contact-form  ">
+                    <div class="row align-items-center">
+                        <div class="col-sm-10 your-message col-sm-offset-1 ">
+                            <div class="form-group">
+                                @if (Model.Count() == 0)
+                                {
+                                    <div class="alert" alert-info>
+                                        <strong>無紀錄</strong>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <br>
+                                    <h2>當前成員</h2>
+                                    <ul class="nav navbar-nav">
+                                        <li>@Html.ActionLink("管理員登出", "Logout", "Home")</li>
+                                    </ul>
+                                    <table class="table" id="dataTableManager">
+                                        <thead>
                                             <tr>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.DataID)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Id)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Name)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Mail)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Total)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Note)
-                                                </th>
+                                                <th class="text-center">身分別</th>
+                                                <th class="text-center">姓名</th>
+                                                <th class="text-center">聯絡方式</th>
+                                                <th class="text-center">報名人數</th>
+                                                <th class="text-center">💖 祝福的話 💖 </th>
+                                                <th class="text-center">報名時間</th>
                                                 <th></th>
                                             </tr>
-
+                                        </thead>
+                                        <tbody>
                                             @foreach (var item in Model)
                                             {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.DataID)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Id)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Mail)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Total)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Note)
-                                            </td>
-                                            <td>
-                                                <a href="@Url.Action("Edit")?DataId=@item.DataID" class="btn btn-warning">編輯</a>
-                                                <a href="@Url.Action("Delete")?DataId=@item.DataID"
-                                                   class="btn btn-danger"
-                                                   onclick="return confirm('確定要刪除序號 @item.DataID - @item.Name 的記錄嗎？');">
-                                                    刪除
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                <tr>
+                                                    <td>@item.TH</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Mail</td>
+                                                    <td>@item.PeopleNumber</td>
+                                                    <td>@item.WantToSay</td>
+                                                    <td>@item.CreateDateTime</td>
 
+                                                    <td>
+                                                        @if (Session["UserEmail"].ToString() == item.Mail)
+                                                        {
+                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                                            <span>|</span>
+                                                        }  
+                                                        @*@Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) *@
+                                                        @if (Session["UserEmail"].ToString() == item.Mail)
+                                                        {
+                                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                                        }
+                                                    </td>
+                                                </tr>
                                             }
-                                        </table>
-                                    }
-                                </div>
+                                        </tbody>
+                                    </table>
+                                }
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-}
+

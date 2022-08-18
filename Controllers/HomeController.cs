@@ -1,4 +1,5 @@
-﻿using FireSharp;
+﻿using Firebase.Auth;
+using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -15,15 +16,20 @@ namespace THU_FORM.Controllers
     public class HomeController : Controller
     {
         readonly IFirebaseClient client;
+        private static string ApiKey = "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4";
+        //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
+        FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
+        
         public HomeController()
         {
-            IFirebaseConfig config = new FirebaseConfig
+            IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
             {
                 AuthSecret = "TszB5Hmop1Jb64FoePa2ITKEbYmL39ZzNavOVQvA",
                 BasePath = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/"
             };
 
             client = new FirebaseClient(config);
+
         }
 
         [AllowAnonymous]
@@ -40,10 +46,10 @@ namespace THU_FORM.Controllers
                 {                   
                     signUpList.Add(new SignUpModel()
                     {
-                        TH = element.Value.TH,
+                        //TH = element.Value.TH,
                         Name = element.Value.Name,
                         //Mail = element.Value.Mail,
-                        PeopleNumber = element.Value.PeopleNumber,
+                        //PeopleNumber = element.Value.PeopleNumber,
                         WantToSay = element.Value.WantToSay,
                         CreateDateTime = element.Value.CreateDateTime
                     });
@@ -59,7 +65,7 @@ namespace THU_FORM.Controllers
             return View();
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Contact()
         {            
             return View();
@@ -101,6 +107,34 @@ namespace THU_FORM.Controllers
         public ActionResult Delete()
         {
             return View();
+        }
+
+        [Authorize]
+        public ActionResult ManagePage()
+        {
+            // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
+            FirebaseResponse response = client.Get("contact");
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            List<SignUpModel> signUpList = new List<SignUpModel>();
+            if (data != null)
+            {
+                Dictionary<string, dynamic> result = data.ToObject<Dictionary<string, dynamic>>();
+                foreach (KeyValuePair<string, dynamic> element in result)
+                {
+                    signUpList.Add(new SignUpModel()
+                    {
+                        TH = element.Value.TH,
+                        Name = element.Value.Name,
+                        Mail = element.Value.Mail,
+                        PeopleNumber = element.Value.PeopleNumber,
+                        WantToSay = element.Value.WantToSay,
+                        CreateDateTime = element.Value.CreateDateTime
+                    });
+
+                }
+            }
+           
+            return View(signUpList);
         }
     }
 }
