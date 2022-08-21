@@ -7,6 +7,9 @@ namespace THU_FORM.Models
 {
     public class SignUpModel
     {
+        //Key
+        public string ID { get; set; }
+
         //身分別
         public string TH { get; set; }
 

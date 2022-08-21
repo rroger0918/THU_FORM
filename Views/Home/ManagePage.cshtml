@@ -29,6 +29,7 @@
                                     <table class="table" id="dataTableManager">
                                         <thead>
                                             <tr>
+                                                @*<th class="text-center">ID</th>*@
                                                 <th class="text-center">身分別</th>
                                                 <th class="text-center">姓名</th>
                                                 <th class="text-center">聯絡方式</th>
@@ -38,10 +39,11 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>                                           
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
+                                                    @*<td>@item.ID</td>*@
                                                     <td>@item.TH</td>
                                                     <td>@item.Name</td>
                                                     <td>@item.Mail</td>
@@ -50,16 +52,14 @@
                                                     <td>@item.CreateDateTime</td>
 
                                                     <td>
-                                                        @if (Session["UserEmail"].ToString() == item.Mail)
-                                                        {
-                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+
+                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH }, new { @class = "btn btn-default " })
                                                             <span>|</span>
-                                                        }  
+
                                                         @*@Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) *@
-                                                        @if (Session["UserEmail"].ToString() == item.Mail)
-                                                        {
-                                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                                        }
+
+                                                            @Html.ActionLink("Delete", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-default " })
+
                                                     </td>
                                                 </tr>
                                             }

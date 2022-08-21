@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using THU_FORM.Models;
@@ -32,24 +33,29 @@ namespace THU_FORM.Controllers
 
         }
 
+        private dynamic _response()
+        {
+            FirebaseResponse response = client.Get("contact");
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            return data;
+        }
+
         [AllowAnonymous]
         public ActionResult Index()
         {
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
-            FirebaseResponse response = client.Get("contact");
-            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+
+            var responseDara = _response();
             List<SignUpModel> signUpList = new List<SignUpModel>();
-            if (data != null)
+            if (responseDara != null)
             {
-                Dictionary<string, dynamic> result = data.ToObject<Dictionary<string, dynamic>>();
+                Dictionary<string, dynamic> result = responseDara.ToObject<Dictionary<string, dynamic>>();
                 foreach (KeyValuePair<string, dynamic> element in result)
                 {                   
                     signUpList.Add(new SignUpModel()
                     {
-                        //TH = element.Value.TH,
+                        ID = element.Key,                        
                         Name = element.Value.Name,
-                        //Mail = element.Value.Mail,
-                        //PeopleNumber = element.Value.PeopleNumber,
                         WantToSay = element.Value.WantToSay,
                         CreateDateTime = element.Value.CreateDateTime
                     });
@@ -104,16 +110,18 @@ namespace THU_FORM.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        [HttpGet]
+        public ActionResult Delete(string ID)
         {
-            return View();
+            FirebaseResponse response = client.Delete("Contact/" + ID);
+            return RedirectToAction("ManagePage");
         }
 
         [Authorize]
         public ActionResult ManagePage()
-        {
+        {            
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
-            FirebaseResponse response = client.Get("contact");
+            FirebaseResponse response = client.Get("contact/");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             List<SignUpModel> signUpList = new List<SignUpModel>();
             if (data != null)
@@ -123,6 +131,7 @@ namespace THU_FORM.Controllers
                 {
                     signUpList.Add(new SignUpModel()
                     {
+                        ID = element.Key,
                         TH = element.Value.TH,
                         Name = element.Value.Name,
                         Mail = element.Value.Mail,
@@ -130,7 +139,9 @@ namespace THU_FORM.Controllers
                         WantToSay = element.Value.WantToSay,
                         CreateDateTime = element.Value.CreateDateTime
                     });
-
+                }
+                if(Session["UserEmail"].ToString() != "leekuantean@gmail.com") {
+                signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
                 }
             }
            

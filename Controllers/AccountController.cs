@@ -53,11 +53,13 @@ namespace THU_FORM.Controllers
                 var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
                 var a = await auth.CreateUserWithEmailAndPasswordAsync(model.Email, model.Password, model.Name, true);
-                ModelState.AddModelError(string.Empty, "驗證信傳送至您的信箱📬，敬請協助驗證，謝謝♥");
+                ModelState.AddModelError(string.Empty, "驗證信傳送至您的信箱📬 ( 高機率被分類到垃圾郵件裡😥 )，敬請協助驗證，謝謝♥");
             }
-            catch (Exception ex)
+            catch (FirebaseAuthException ex)
             {
-                ModelState.AddModelError(string.Empty, "系統錯誤，麻煩您重新操作一次，謝謝😥");
+                string errorReason = ex.Reason.ToString();
+ 
+                ModelState.AddModelError(string.Empty, "錯誤原因：【" + errorReason + "】，麻煩您重新操作或聯絡系統管理員，謝謝😥");
             }
 
             return View();
