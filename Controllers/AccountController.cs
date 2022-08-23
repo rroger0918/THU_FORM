@@ -98,7 +98,7 @@ namespace THU_FORM.Controllers
                 // Verification.
                 if (ModelState.IsValid)
                 {
-                    //var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
+                    //var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));                   
                     var ab = await auth.SignInWithEmailAndPasswordAsync(model.Email, model.Password);
                     string token = ab.FirebaseToken;
                     var user = ab.User;

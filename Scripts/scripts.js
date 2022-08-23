@@ -76,10 +76,10 @@ $(document).ready(function () {
         responsive: true,
         order: [[5, 'desc']],
         language: {
-            "emptyTable": "無紀錄",
-            "lengthMenu": "顯示前 _MENU_ 位會員🎓 ",
-            "info": " 總計 _TOTAL_ 位會員🎓  ",
-            "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 位會員🎓 ",
+            "emptyTable": "無留言紀錄",
+            "lengthMenu": "顯示前 _MENU_ 則紀錄🎓 ",
+            "info": " 總計 _TOTAL_ 則紀錄🎓  ",
+            "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 則紀錄🎓 ",
             "search": "🔎搜尋:",
             "paginate": {
                 "first": "第一頁",

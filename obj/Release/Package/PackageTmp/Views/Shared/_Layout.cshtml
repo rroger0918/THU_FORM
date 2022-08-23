@@ -98,10 +98,13 @@
         .navbar-brand, .service-aro-left, .service-aro-right, .fa {
             color: #b48d06 !important;
         }
-        #hoverAction1:hover, #hoverAction2:hover, #hoverAction3:hover, #hoverAction4:hover, #hoverAction5:hover {
+
+        #hoverAction1:hover, #hoverAction2:hover, #hoverAction3:hover, #hoverAction4:hover, #hoverAction5:hover, #hoverAction6:hover, #hoverAction7:hover, #navbarDropdown:hover, #hoverAction9:hover, #hoverAction10:hover {
             color: #b48d06 !important;
+            @*font-weight: bold !important;*@
         }
-        #hoverAction1:active, #hoverAction2:active, #hoverAction3:active, #hoverAction4:active, #hoverAction5:active {
+
+        #hoverAction1:active, #hoverAction2:active, #hoverAction3:active, #hoverAction4:active, #hoverAction5:active, #hoverAction6:active, #hoverAction7:active, #navbarDropdown:active, #hoverAction9:active, #hoverAction10:active {
             color: #b48d06 !important;
             font-weight: bold !important;
         }
@@ -177,22 +180,38 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*雲林CSS*@
-                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home",new { @class = "navbar-brand" })
+                @Html.ActionLink("🤵👰 TOP MON研討會 💍💕", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav justify-content-center">
                     @*雲林CSS*@
-                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", null,new { @id = "hoverAction1" })</li>
-                    <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
-                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
-                    @if (@Session["UserName"] != null)
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("🙋 " + @Session["UserName"] + " ，登出帳戶 ~", "LogOff", "Account", null, new { @id = "hoverAction4" })</li>
+                        <li style="margin-bottom:1%; font-size: 1.5em; font-weight:bold !important;"><a style="color: #b48d06 !important;" id="hoverAction10">🙋  Hi， @Session["UserName"]</a></li>
+
+                        <li>
+                            @Html.ActionLink("🚀  帳戶管理", "ManagePage", "Home", null, new { @id = "hoverAction4" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("🚀  登出", "LogOff", "Account", null, new { @id = "hoverAction9" })
+                        </li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("🙋  登入", "Login", "Account", null, new { @id = "hoverAction5" })</li>
+                        <li>
+                            @Html.ActionLink("🙋  註冊", "Regist", "Account", null, new { @class = "dropdown-item", @id = "hoverAction6" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("🙋  登入", "Login", "Account", null, new { @class = "dropdown-item", @id = "hoverAction7" })
+                        </li>
                     }
+                    <li>
+                        <hr style="width: 70% !important;">
+                    </li>
+                    <li>@Html.ActionLink("💎  首頁", "Index", "Home", null, new { @id = "hoverAction1" })</li>
+                    <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
+                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
+                    <li><hr style="width: 70% !important;"></li>
                 </ul>
             </div>
         </div>
@@ -200,7 +219,7 @@
 
     @RenderBody()
 
-
+    @*&emsp;<a href="#footer"><i class="fa fa-commenting"></i></a>*@
     <footer class="footer navbar-static-bottom">
         <div class="container-fluid">
             <div class="text-right ">
@@ -222,6 +241,8 @@
             </div>
         </div>
     </footer>
+    @*<input type="submit" value="古狗登入" id="googlelogin" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" />
+        <input type="submit" value="古狗登出" id="googlesignOcut" class="btn" style="margin-bottom:2%; background-color:#b48d06;color:white;width:100%;" />*@
 
     <script type=" text/javascript " src="~/Scripts/jquery.min.js "></script>
     <!-- jQuery -->
@@ -230,20 +251,88 @@
     <script type="text/javascript " src="~/Scripts/jquery.ajaxchimp.js "></script>
     <!-- ajaxchimp -->
     <script type="text/javascript " src="~/Scripts/scripts.js "></script>
+    <!-- Bootstrap下拉選單 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script type="text/javascript " src="~/Scripts/styleswitcher.js "></script>
     <script type="text/javascript " src="~/Scripts/demo.js "></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-
     <!--DataTable-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    @*FireBase引入檔*@
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4",
+            authDomain: "thu-form.firebaseapp.com",
+            databaseURL: "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "thu-form",
+            storageBucket: "thu-form.appspot.com",
+            messagingSenderId: "680570673162",
+            appId: "1:680570673162:web:42315e4d575c364a5727f3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        @*const auth = getAuth(app);
+        const provider = new GoogleAuthProvider(app);
+
+        googlelogin.addEventListener('click', (e) => {
+            // sign in with popup tab
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    // The signed-in user info.
+                    const user = result.user;
+
+                    alert(user.displayName + '登入成功');
+                    $('#googleAccount').append('<span>' + user.displayName + '<span>');
+                    // ...
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                    alert(errorMessage + '登入失敗');
+                });
+        });
+
+        googlesignOcut.addEventListener('click', (e) => {
+            signOut(auth).then(() => {
+                alert('登出成功');
+            }).catch((error) => {
+                alert('登出失敗');
+            });
+        });*@
+
+    </script>
+    @*<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>*@
+
 
     <!--連接FireBase RealTime DB-->
-    <script type="module">
+    <!--<script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
@@ -262,7 +351,25 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-    </script>
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        //估狗登入
+        // google
+        var providerG = new firebase.auth.GoogleAuthProvider();
+
+        var btnGooglePopup = document.getElementById('googleSingUpPopup');
+
+        btnGooglePopup.onclick = function () {
+            firebase.auth().signInWithPopup(providerG).then(function (result) {
+                // 可以獲得 Google 提供 token，token可透過 Google API 獲得其他數據。
+                var token = result.credential.accessToken;
+                var user = result.user;
+                console.log(user)
+            });
+        }
+
+    </script>-->
     <!--櫻花特效-->
     <script src="~/Content/Sakura/jquery-sakura.min.js"></script>
     <script>
@@ -272,9 +379,9 @@
         });
 
         // windowLoad
-        $(function () {
+        @*$(function () {
             $('body').sakura();
-        });
+        });*@
     </script>
 
     <script>
@@ -288,5 +395,6 @@
         console.log("即為吾");
         console.log("吾乃武神昂哥，眾神之天也");
     </script>
+
 </body>
 </html>

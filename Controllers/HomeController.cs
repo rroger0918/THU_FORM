@@ -20,9 +20,10 @@ namespace THU_FORM.Controllers
         private static string ApiKey = "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4";
         //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
         FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
-        
+
+
         public HomeController()
-        {
+        {            
             IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
             {
                 AuthSecret = "TszB5Hmop1Jb64FoePa2ITKEbYmL39ZzNavOVQvA",
@@ -33,6 +34,7 @@ namespace THU_FORM.Controllers
 
         }
 
+        //首頁DB資料
         private dynamic _response()
         {
             FirebaseResponse response = client.Get("contact");
@@ -43,27 +45,24 @@ namespace THU_FORM.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
-
             var responseDara = _response();
             List<SignUpModel> signUpList = new List<SignUpModel>();
             if (responseDara != null)
             {
                 Dictionary<string, dynamic> result = responseDara.ToObject<Dictionary<string, dynamic>>();
                 foreach (KeyValuePair<string, dynamic> element in result)
-                {                   
+                {
                     signUpList.Add(new SignUpModel()
                     {
-                        ID = element.Key,                        
+                        ID = element.Key,
                         Name = element.Value.Name,
                         WantToSay = element.Value.WantToSay,
                         CreateDateTime = element.Value.CreateDateTime
                     });
 
                 }
-            }           
+            }
             return View(signUpList);
-        
         }
 
         public ActionResult Theme()
@@ -73,7 +72,7 @@ namespace THU_FORM.Controllers
 
         [AllowAnonymous]
         public ActionResult Contact()
-        {            
+        {
             return View();
         }
 
@@ -113,13 +112,38 @@ namespace THU_FORM.Controllers
         [HttpGet]
         public ActionResult Delete(string ID)
         {
-            FirebaseResponse response = client.Delete("Contact/" + ID);
+            FirebaseResponse response = client.Delete("contact/" + ID);
             return RedirectToAction("ManagePage");
+        }
+
+        //還沒寫編輯View
+        [HttpGet]
+        public ActionResult Edit(string ID)
+        {  
+            FirebaseResponse response = client.Get("contact/" + ID);
+            SignUpModel data = JsonConvert.DeserializeObject<SignUpModel>(response.Body);
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(SignUpModel data)
+        {
+            SetResponse response = client.Set("contact/" + data.ID, data);
+            return RedirectToAction("ManagePage");
+        }
+
+        //還沒寫檢視詳細頁View
+        [HttpGet]
+        public ActionResult Detail(string id)
+        {
+            FirebaseResponse response = client.Get("contact/" + id);
+            SignUpModel data = JsonConvert.DeserializeObject<SignUpModel>(response.Body);
+            return View(data);
         }
 
         [Authorize]
         public ActionResult ManagePage()
-        {            
+        {
             // Dictionary<string, SignUpList> list = new Dictionary<string, SignUpList>();
             FirebaseResponse response = client.Get("contact/");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
@@ -140,11 +164,12 @@ namespace THU_FORM.Controllers
                         CreateDateTime = element.Value.CreateDateTime
                     });
                 }
-                if(Session["UserEmail"].ToString() != "leekuantean@gmail.com") {
-                signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
+                if (Session["UserEmail"].ToString() != "leekuantean@gmail.com")
+                {
+                    signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
                 }
             }
-           
+
             return View(signUpList);
         }
     }
