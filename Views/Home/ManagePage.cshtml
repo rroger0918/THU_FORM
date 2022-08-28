@@ -1,71 +1,96 @@
 ﻿@model IEnumerable<THU_FORM.Models.SignUpModel>
+
+<style>
+    .modal {
+        text-align: center;
+        padding: 0 !important;
+        /* display: none !important;*/
+    }
+
+        .modal:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px; /* Adjusts for spacing */
+        }
+
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .btn-primary {
+        background-color: #b48d06 !important;
+        border-color: white !important;
+    }
+</style>
+
+
 @{
     ViewBag.Title = "Home Page";
 }
 
+@if (TempData["DeleteMessage"] != null)
+{
+    <input type="hidden" class="resultValue" value=@TempData["DeleteMessage"] id="DeleteMessageBox" />
+}
 
 <section id="contact-page ">
 
-    <div class="container ">
+    <div class="container" style="padding: 0px !important;">
         <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
             <div class="col-md-12 ">
                 <div class="contact-form  ">
                     <div class="row align-items-center">
                         <div class="col-sm-10 your-message col-sm-offset-1 ">
                             <div class="form-group">
-                                @if (Model.Count() == 0)
-                                {
-                                    <div class="alert" alert-info>
-                                        <strong>無紀錄</strong>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <br>
-                                    <h2>管理留言</h2>
-                                    <ul class="nav navbar-nav">
-                                        <li>@Html.ActionLink("帳戶登出", "LogOff", "Account", null,null)</li>
-                                    </ul>
-                                    <table class="table" id="dataTableManager">
-                                        <thead>
+                                <br>
+                                <h2 style="color: #b48d06; padding: 0 10px;">報名管理</h2>
+                                <div class="row">
+                                    <div class="col-3 col-sm-3 col-xs-3" style="text-decoration: underline; margin: 0 10px !important;">@Html.ActionLink("帳戶登出", "LogOff", "Account", null, null)</div>
+                                    <div class="col-3 col-sm-3 col-xs-3" style="text-decoration: underline; margin-left: -30px !important;">@Html.ActionLink("前往報名", "Contact", "Home", null, null)</div>
+                                </div><br>
+                                <table class="table" id="dataTableManager">
+                                    <thead>
+                                        <tr>
+                                            @*<th class="text-center">ID</th>*@
+                                            <th class="text-center">身分別</th>
+                                            <th class="text-center">姓名</th>
+                                            @*<th class="text-center">聯絡方式</th>*@
+                                            <th class="text-center">報名人數</th>
+                                            <th class="text-center">祝福的話</th>
+                                            <th class="text-center">報名時間</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
                                             <tr>
-                                                @*<th class="text-center">ID</th>*@
-                                                <th class="text-center">身分別</th>
-                                                <th class="text-center">姓名</th>
-                                                <th class="text-center">聯絡方式</th>
-                                                <th class="text-center">報名人數</th>
-                                                <th class="text-center">💖 祝福的話 💖 </th>
-                                                <th class="text-center">報名時間</th>
-                                                <th></th>
+                                                @*<td>@item.ID</td>*@
+                                                <td  class="text-center">@item.TH</td>
+                                                <td  class="text-center">@item.Name</td>
+                                                @*<td>@item.Mail</td>*@
+                                                <td  class="text-center">@item.PeopleNumber</td>
+                                                <td  class="text-center">@item.WantToSay</td>
+                                                <td  class="text-center">@item.CreateDateTime</td>
+
+                                                <td>
+
+                                                    @Html.ActionLink("編輯", "Edit", "Home", new { id = item.ID }, new { @class = "btn btn-default " })
+
+
+                                                    @*@Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) *@
+                                                    <button type="button" class="btn btn-default" onclick="ShowDelete();"> 刪除</button>
+                                                    @*@Html.ActionLink("Delete", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-default " })*@
+
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>                                           
-                                            @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    @*<td>@item.ID</td>*@
-                                                    <td>@item.TH</td>
-                                                    <td>@item.Name</td>
-                                                    <td>@item.Mail</td>
-                                                    <td>@item.PeopleNumber</td>
-                                                    <td>@item.WantToSay</td>
-                                                    <td>@item.CreateDateTime</td>
-
-                                                    <td>
-
-                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH }, new { @class = "btn btn-default " })
-                                                            <span>|</span>
-
-                                                        @*@Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) *@
-
-                                                            @Html.ActionLink("Delete", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-default " })
-
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                }
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -73,5 +98,60 @@
             </div>
         </div>
     </div>
+    <!--動畫雞走路-->
+    <div class="col-lg-12" id="rookie" style="margin-top:-100px;">
+        @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_nDfyvudjoP.json" background="transparent" speed="1.5" style="width: 400px;" autoplay loop></lottie-player>
+        @*<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>*@
+    </div>
 </section>
 
+@*確認是否刪除燈箱*@
+@foreach (var item in Model)
+{
+
+    <div class="modal" id="deleteOrNot" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        🎓 TOP MON研討會 🎓
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="cancelPage" aria-hidden="true" onclick="CancelDelete()">x</span>
+                        </button>
+                    </h5>
+                </div>
+                <div class="modal-body  text-center">
+                    <h4>確定刪除該筆資料嗎?</h4>
+                </div>
+                <div class="modal-footer">
+                    @Html.ActionLink("確定", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-primary" })
+                    <button type="button" class="btn btn-primary" onclick="CancelDelete();"> 取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*刪除成功訊息燈箱*@
+<div class="modal" id="deleteSuccess" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    🎓 TOP MON研討會 🎓
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="cancelPage" aria-hidden="true">@Html.ActionLink(HttpUtility.HtmlDecode("&times;"), "ManagePage", "Home")</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body  text-center">
+                <h4>刪除成功</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style = "color:white;" onclick="OKgood()">OK 讚讚</button>
+                @*<button type="button" class="btn btn-primary">  @Html.ActionLink("OK 讚讚", "ManagePage", "Home", null, new { style = "color:white;padding:1%;" })</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mask" id="mask" style="position: fixed; top: 0px; left: 0px; right: 0px; background-color: white; opacity: 0.7; height: 100vh; width: 100vw; display: none; "></div>

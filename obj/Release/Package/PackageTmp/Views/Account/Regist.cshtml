@@ -11,52 +11,76 @@
     {
         @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h2 style="margin-top:15%;"><span style="border-left: 5px solid #b48d06 ;">&nbsp;註</span>冊</h2>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h2 style="margin-top:15%;"><span style="border-left: 5px solid #b48d06 ;">&nbsp;註</span>冊</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2", @style = "display: inline-block" })
+                <div onclick="showme('widget');" id="geeks" class="col-sm-1" style="display: inline-block; margin-left:-20px;">
+                    <i class="fa fa-question-circle"></i>
+                </div>
+                <div id="widget" style="display:none; padding-left:10px;">
+                    <h6 style="color: #b48d06; ">
+                        * 密碼僅用於本網站<br> * 無需與註冊信箱的原密碼相同
+                    </h6>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="註冊" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
-        <br>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="註冊" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
     }
-<div>
-    @*<button id="googleSingUpPopup">使用google註冊(Popup)</button>*@
-    @*<button id="singUpRedirect">使用google註冊(Redirect)</button>*@
-    @Html.ActionLink("返到登入頁", "Login", "Account")
-</div>
+    <div>
+        @*<button id="googleSingUpPopup">使用google註冊(Popup)</button>*@
+        @*<button id="singUpRedirect">使用google註冊(Redirect)</button>*@
+        @Html.ActionLink("返到登入頁", "Login", "Account")
+    </div>
 </div>
 <!--動畫雞走路-->
-<div class="col-lg-12 mt-3" id="rookie" style="margin-left:10%;">
+<div class="col-lg-12 mt-3" id="rookie" style="margin-left:20%;">
     <div class="row text-center">
         @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_7ub0glk3.json" background="transparent" speed="1" style="width:90vw;margin-top:20%;" autoplay></lottie-player>        
+        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_7ub0glk3.json" background="transparent" speed="2" style="width:90vw;margin-top:20%;" autoplay></lottie-player>
     </div>
 </div>
+
+
+<script>
+    function showme(id) {
+        var gfg = document.getElementById(id);
+        var GFG = document.getElementById("geeks");
+        if (gfg.style.display == 'block') {
+            gfg.style.display = 'none';
+            GFG.innerHTML =
+                '<i class="fa fa-question-circle"></i>';
+        } else {
+            gfg.style.display = 'block';
+            GFG.innerHTML =
+                '<i class="fa fa-question-circle"></i>';
+        }
+    }
+</script>

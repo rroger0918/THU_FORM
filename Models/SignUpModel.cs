@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,24 +12,29 @@ namespace THU_FORM.Models
         public string ID { get; set; }
 
         //身分別
+        [Required]
         public string TH { get; set; }
 
         //姓名
+        [Required]
         public string Name { get; set; }
 
         //是否為匿名
-        public byte scales { get; set; }        
+        public byte scales { get; set; }
 
         //信箱
+        [Required]
         public string Mail { get; set; }
 
         //攜伴人數
+        [Required]
         public string PeopleNumber { get; set; }
 
         //想說的話
         public string WantToSay { get; set; }
 
         //確定參加
+        [Required]
         public byte ConfirmOK { get; set; }
 
         //建立時間

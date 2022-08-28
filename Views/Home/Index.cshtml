@@ -126,8 +126,7 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="form-group">
-                                @if (Model != null)
-                                {
+
                                     @*<h2 style="text-align:center;">當前成員</h2>*@
 
                                     <table class="table" id="dataTable">
@@ -147,11 +146,11 @@
                                             {
                                                 <tr>
                                                     @*<td>@item.TH</td>*@
-                                                    <td>@item.Name</td>
+                                                    <td  class="text-center">@item.Name</td>
                                                     @*<td>@item.Mail</td>*@
                                                     @*<td>@item.PeopleNumber</td>*@
-                                                    <td>@item.WantToSay</td>
-                                                    <td style="display: none;">@item.CreateDateTime</td>
+                                                    <td  class="text-center">@item.WantToSay</td>
+                                                    <td  class="text-center" style="display: none;">@item.CreateDateTime</td>
                                                     @*<td>
                                                             @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
                                                             @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
@@ -162,13 +161,6 @@
                                             }
                                         </tbody>
                                     </table>
-                                }
-                                else
-                                {
-                                    <div class="alert">
-                                        <strong>無紀錄</strong>
-                                    </div>
-                                }
                             </div>
                         </div>
                         <div class="contact-form">

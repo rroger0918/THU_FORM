@@ -21,9 +21,8 @@ namespace THU_FORM.Controllers
         //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
         FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
-
         public HomeController()
-        {            
+        {
             IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
             {
                 AuthSecret = "TszB5Hmop1Jb64FoePa2ITKEbYmL39ZzNavOVQvA",
@@ -112,24 +111,41 @@ namespace THU_FORM.Controllers
         [HttpGet]
         public ActionResult Delete(string ID)
         {
-            FirebaseResponse response = client.Delete("contact/" + ID);
+            if (ID != null)
+            {
+                FirebaseResponse response = client.Delete("contact/" + ID);
+                if (response.StatusCode.ToString() == "OK")
+                {
+                    TempData["DeleteMessage"] = "刪除成功";
+                    return RedirectToAction("ManagePage");
+                }
+            }
             return RedirectToAction("ManagePage");
         }
 
+
         //還沒寫編輯View
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(string ID)
-        {  
+        {
             FirebaseResponse response = client.Get("contact/" + ID);
             SignUpModel data = JsonConvert.DeserializeObject<SignUpModel>(response.Body);
             return View(data);
         }
-
+       
         [HttpPost]
         public ActionResult Edit(SignUpModel data)
         {
+            //設定台北時間
+            var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+            DateTimeOffset localServerTime = DateTimeOffset.Now;
+            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
+            data.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
+
             SetResponse response = client.Set("contact/" + data.ID, data);
-            return RedirectToAction("ManagePage");
+            TempData["EditSuccess"] = "EditSuccess";
+            return View();
         }
 
         //還沒寫檢視詳細頁View
@@ -164,12 +180,12 @@ namespace THU_FORM.Controllers
                         CreateDateTime = element.Value.CreateDateTime
                     });
                 }
-                if (Session["UserEmail"].ToString() != "leekuantean@gmail.com")
+                if (Session["UserEmail"] != null && Session["UserEmail"].ToString() != "leekuantean@gmail.com")
                 {
                     signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
                 }
             }
-
+            
             return View(signUpList);
         }
     }

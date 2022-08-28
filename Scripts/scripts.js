@@ -74,7 +74,7 @@ $(document).ready(function () {
     //管理者的DataTable
     $('#dataTableManager').DataTable({
         responsive: true,
-        order: [[5, 'desc']],
+        order: [[4, 'desc']],
         language: {
             "emptyTable": "無留言紀錄",
             "lengthMenu": "顯示前 _MENU_ 則紀錄🎓 ",
@@ -96,12 +96,49 @@ $(document).ready(function () {
             $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")
             $('#user_name').remove();
             $('#user_name2').show();
-            $('#user_name2').attr('required');
+            $('#user_name2').attr("required", true);
         }
         else {
             $('#InputDiv').html("<input type='text' class='form-control user_name' name='Name' id='user_name' tabindex='1' value='" + $('#txtSessionName').val() + "' required  autofocus readonly >")
             $('#user_name2').remove();
-            $('#user_name').show();          
+            $('#user_name').show();
         }
     });
 });
+
+
+//刪除資料取消
+function CancelDelete() {
+    $("#deleteOrNot").hide();
+    $("#mask").hide();
+}
+
+//刪除資料燈箱打開
+function ShowDelete() {
+    $("#mask").show();
+    $("#deleteOrNot").show();
+
+}
+
+//刪除成功燈箱關閉
+function OKgood () {
+    $("#mask").hide();
+    $("#deleteSuccess").hide();
+
+}
+
+//刪除成功訊息燈箱
+(function () {
+    if ($('#DeleteMessageBox').length > 0 && ('#DeleteMessageBox').valueOf() != null && ('#DeleteMessageBox').valueOf() != "") {
+        $("#mask").show();
+        $("#deleteSuccess").show();
+    }
+}());
+
+//編輯成功訊息燈箱打開
+(function () {
+    if ($('#EditSuccessMessageBox').length > 0 && ('#EditSuccessMessageBox').valueOf() != null && ('#EditSuccessMessageBox').valueOf() != "") {
+        $("#mask").show();
+        $("#editSuccessBox").show();
+    }
+}());

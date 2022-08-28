@@ -1,4 +1,8 @@
-﻿@model THU_FORM.Models.LoginViewModel
+﻿@model THU_FORM.Models.SignUpModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <style>
     #rookie {
@@ -30,39 +34,44 @@
         border-color: white !important;
     }
 </style>
-@if (TempData["Message"] != null)
+
+@if (TempData["EditSuccess"] != null)
 {
-    <input type="hidden" class="resultValue" value="@TempData["Message"]" id="MessageBox" />
+    <input type="hidden" class="resultValue" value=@TempData["EditSuccess"] id="EditSuccessMessageBox" />
 }
+
 <div class="container" style="margin-top:5%;">
     <div class="row justify-content-center">
         <div class="col-lg-9">
-            <br>
-            <h2 style="color: #b48d06;">期待您的蒞臨與指導</h2><br>
-            <form action="@Url.Action("Contact", "Home")" method="post" id="Form1" }>
-                @if (Session["UserName"] != null)
+            <br><br>
+            <h2 style="color: #b48d06;">報名資料編輯</h2>
+            <div class="row">
+                <div class="col-3 col-sm-3 col-xs-3" style="text-decoration:underline;">@Html.ActionLink("上一頁", "ManagePage", "Home", null, null)</div>
+            </div><br>
+            <form action="@Url.Action("Edit", "Home")" method="post" id="Form1" }>
+                @if (Model != null && Model.Name != null)
                 {
-                    <input type="hidden" id="txtSessionName" value="@Session["UserName"].ToString()">
+                    <input type="hidden" id="txtSessionName" value=@Model.Name>
                 }
                 <div class="form-group mb-1">
                     <div style="padding-right: 0px;">
                         <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;margin-right:3%;">&nbsp;  姓名</label>
-                        @if (Session["UserName"] != null)
+                        @if (Model != null && Model.Name != null)
                         {
                             <input type="checkbox" name="scales" value="1" id="CheckBox">
                             <label for="scales">或使用暱稱</label>
                         }
                     </div>
                     <div id="InputDiv">
-                        @if (Session["UserName"] != null)
+                        @if (Model != null && Model.Name != null)
                         {
-                            <input type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1" value="@Session["UserName"].ToString()"
+                            <input type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1" value=@Model.Name
                                    required autofocus readonly>
                         }
                         else
                         {
                             <input placeholder="乂卍煞采o戀羽卍乂" type="text" class="form-control user_name" name="Name" id="user_name2" tabindex="1"
-                                   autofocus required>
+                                   autofocus>
                         }
                     </div>
                 </div>
@@ -72,7 +81,11 @@
                         @*第幾屆*@
                     </label>
                     <select class="form-control" type="text" name="TH" required>
-                        <option value="">- 請選擇身分別 -</option>
+                        @if (Model != null && Model.TH != null)
+                        {
+                            <option selected="selected">@Model.TH</option>
+                        }
+                        <option style="background-color:antiquewhite;" value="">- 請選擇身分別 -</option>
                         <option value="男方親友">男方親友</option>
                         <option value="女方親友">女方親友</option>
                         <option value="同為雙方親友">同為雙方親友</option>
@@ -81,9 +94,9 @@
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlInput1" style=" border-left: 5px solid #b48d06 ;">&nbsp;  聯絡方式</label>
-                    @if (Session["UserName"] != null)
+                    @if (Model != null && Model.Mail != null)
                     {
-                        <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" value=@Session["UserEmail"] required readonly>
+                        <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" value=@Model.Mail required readonly>
                     }
                     else
                     {
@@ -91,25 +104,38 @@
                     }
                 </div>
                 <div class="form-group mb-1">
-                    <label for="exampleFormControlSelect1" style="border-left: 5px solid #b48d06 ;">&nbsp;  報名人數 ( 至多5人 )</label>
-                    <input name="PeopleNumber" type="number" class="form-control subject" id="subject" placeholder="number" min="1" max="5" value="1" required>
+                    <label for="exampleFormControlSelect1" style="border-left: 5px solid #b48d06 ;">&nbsp;  報名人數 ( 至多10人 )</label>
+                    @if (Model != null && Model.PeopleNumber != null)
+                    {
+                        <input name="PeopleNumber" type="number" class="form-control subject" id="subject" placeholder="number" min="1" max="10" value=@Model.PeopleNumber required>
+                    }
+                    else
+                    {
+                        <input name="PeopleNumber" type="number" class="form-control subject" id="subject" placeholder="number" min="1" max="10"  required>
+                    }
                 </div>
                 <div class="form-group mb-1">
                     <label for="exampleFormControlTextarea1">&nbsp; 祝福的話 ~</label>
-                    <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
-                    @*<textarea class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="想吃OOXX餐廳、參觀OOXX景點、我吃素、只在民宿打麻將、來夜衝……等等，任何願望要求建議提議，皆歡迎對本會提出!" tabindex="5"></textarea>*@
+                    @if (Model != null && Model.WantToSay != null)
+                    {
+                        <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5">@Model.WantToSay</textarea>
+                    }
+                    else
+                    {
+                        <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
+                    }
                 </div>
                 <div class="form-check mb-2" style="border-left: 5px solid #b48d06 ;">
                     &nbsp;
                     <input class="form-check-input" name="ConfirmOK" type="checkbox" id="flexCheckIndeterminate" value="1" required>
                     <label class="form-check-label" for="flexCheckIndeterminate">
-                        <span>&nbsp; 請確認已了解</span>@Html.ActionLink("活動議程", "Theme", "Home") 🤘
+                        <span>&nbsp; 確定修改 👍</span>
                     </label>
                 </div>
-                <div class="form-group" style="padding-top: 3%; margin-top: 3%;margin-bottom: -15%; ">
-                    @*<div class="form-group" style="padding-top:1%; margin-bottom:5%;">*@
-                    <button name="submit" type="submit" class="btn btn-primary my-1"> 確定</button>
+                <div class="form-group" style="padding-top: 3%; margin-top: 3%;margin-bottom: -15%;">
+                    <button name="submit" type="submit" class="btn btn-primary my-1"> 儲存 </button>
                 </div>
+
             </form>
         </div>
 
@@ -121,23 +147,22 @@
         </div>
 
         @*訊息燈箱*@
-        <div class="modal" id="messages" tabindex="-1" role="dialog">
+        <div class="modal" id="editSuccessBox" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
                             🎓 TOP MON研討會 🎓
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="cancelPage" aria-hidden="true">@Html.ActionLink(HttpUtility.HtmlDecode("&times;"), "Contact", "Home")</span>
+                                <span class="cancelPage" aria-hidden="true">@Html.ActionLink(HttpUtility.HtmlDecode("&times;"), "Edit", "Home")</span>
                             </button>
                         </h5>
                     </div>
                     <div class="modal-body  text-center">
-                        <h4 id="messages_content">@TempData["Message"]</h4>
+                        <h4 id="messages_content">儲存成功</h4>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">  @Html.ActionLink("前往首頁 👌🏼", "Index", "Home", null, new { style = "color:white;padding:1%;" })</button>
-                        <button type="button" class="btn btn-secondary">@Html.ActionLink("再次報名🖖🏼", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
+                        <button type="button" class="btn btn-primary">  @Html.ActionLink("OK 讚讚", "ManagePage", "Home", null, new { style = "color:white;padding:1%;" })</button>
                     </div>
                 </div>
             </div>
@@ -146,4 +171,6 @@
     </div>
 
 </div>
+
+
 
