@@ -70,6 +70,30 @@ namespace THU_FORM.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult ContactList()
+        {
+            var responseDara = _response();
+            List<SignUpModel> signUpList = new List<SignUpModel>();
+            if (responseDara != null)
+            {
+                Dictionary<string, dynamic> result = responseDara.ToObject<Dictionary<string, dynamic>>();
+                foreach (KeyValuePair<string, dynamic> element in result)
+                {
+                    signUpList.Add(new SignUpModel()
+                    {
+                        ID = element.Key,
+                        Name = element.Value.Name,
+                        Mail = element.Value.Mail,
+                        WantToSay = element.Value.WantToSay,
+                        CreateDateTime = element.Value.CreateDateTime
+                    });
+
+                }
+            }
+            return View(signUpList);
+        }
+
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             return View();

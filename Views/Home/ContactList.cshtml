@@ -1,0 +1,272 @@
+﻿@model IEnumerable<THU_FORM.Models.SignUpModel>
+
+@{
+    List<string> aaa = Model.GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
+    var most = Model.Where(x => x.Mail == aaa.First()).ToList().FirstOrDefault().Name;
+    var second = Model.Where(x => x.Mail == aaa[1]).ToList().FirstOrDefault().Name;
+    var third = Model.Where(x => x.Mail == aaa[2]).ToList().FirstOrDefault().Name;
+}
+<!------ 照片牆 ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/photowall.css">
+
+<!------ 照片牆 ---------->
+
+<style>
+    b, h2, h6 {
+        color: black !important;
+    }
+
+    #about-page {
+        padding: 100px 0 0 0 !important;
+    }
+
+    .filter-button {
+        background-color: #b48d06;
+        color: white;
+        border-color: white;
+    }
+
+        .filter-button:hover, .filter-button:focus, .filter-button.active {
+            background-color: white !important;
+            color: #b48d06 !important;
+            border-color: #b48d06 !important;
+        }
+
+    h1 {
+        color: #b48d06;
+    }
+</style>
+
+
+
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: -10%;">
+                <br>
+                <br>
+                <h3 class="gallery-title" style="color: #b48d06;">祝福新人</h3>
+                <div class="service-aro-icon ">
+                    <div class="service-aro-left "></div>
+                    <i class="fa fa-rocket "></i>
+                    <div class="service-aro-right "></div>
+                </div>
+                <h3 class="gallery-subtitle"><span style="border-left: 5px solid #b48d06 ;">&nbsp; ㊗️</span>福最踴躍的前三名親友<br>將獲得神秘獎品</h3>
+            </div>
+
+            <div align="center">
+                <button type="button" class="btn btn-lg" style="pointer-events: none;  text-align: start; background-color: white !important;">🥇</button><span align="center">@most</span>
+
+                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button> <span align="center">@second</span>
+
+
+                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥉</button><span align="center">@third</span>
+
+                <br />
+                <br />
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/0326.jpg" />
+                        <div class='img-info'>
+                            <h4>中華郵政 資安管理員</h4>
+                            <h4>璇璇海豹</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/400X250.jpg" />
+                        <div class='img-info'>
+                            <h4>ShopBack 前端工程師</h4>
+                            <h4>J0hnny</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/yachu.jpg" />
+                        <div class='img-info'>
+                            <h4>法務部資訊處 分析師</h4>
+                            <h4>Wenna</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/adam.jpg" />
+                        <div class='img-info'>
+                            <h4>勤業眾信 資安風險諮詢顧問</h4>
+                            <h4>Adam</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/e..jpg" />
+                        <div class='img-info'>
+                            <h4>Garena 前端工程師</h4>
+                            <h4>Rose</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/yang.jpg" />
+                        <div class='img-info'>
+                            <h4>PE Fund 研究員</h4>
+                            <h4>Sam 誠君</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/jhao.jpg" />
+                        <div class='img-info'>
+                            <h4>蝦皮購物 測試工程師 </h4>
+                            <h4>趙姊</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/Limon.jpg" />
+                        <div class='img-info'>
+                            <h4>提克斯國際餐飲 執行長特助</h4>
+                            <h4>黑狗 Daniel</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/mon.jpg" />
+                        <div class='img-info'>
+                            <h4>LT.C Content Creator</h4>
+                            <h4>Allen Mon </h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/owen.jpg" />
+                        <div class='img-info'>
+                            <h4>今網通訊 前端工程師</h4>
+                            <h4>Owen</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/Ting.jpg" />
+                        <div class='img-info'>
+                            <h4>玉山銀行 應用系統工程師</h4>
+                            <h4>阿冠</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
+                    <a class="fancybox">
+                        <img class="img-responsive" alt="" src="~/images/teacher/flower.jpg" />
+                        <div class='img-info'>
+                            <h4>臺北市政府資訊局 管理師</h4>
+                            <h4>Rina</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- /#service-page -->
+<!-- /#service-page -->
+
+<section id="about-page ">
+    <div class="container ">
+        <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
+            <div class="col-md-12 text-center">
+                <h1 class="contact-title text-center">報名聚會，把握機會</h1>
+                <div class="service-aro-icon ">
+                    <div class="service-aro-left "></div>
+                    <i class="fa fa-rocket "></i>
+                    <div class="service-aro-right "></div>
+                </div>
+                <h2>當前成員</h2><br>
+                <div class="contact-form  ">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="form-group">
+
+                                @*<h2 style="text-align:center;">當前成員</h2>*@
+
+                                <table class="table" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            @*<th class="text-center">屆</th>*@
+                                            <th class="text-center">姓名</th>
+                                            @*<th class="text-center">聯絡方式</th>*@
+                                            @*<th class="text-center">報名人數</th>*@
+                                            <th class="text-center">💖 祝福的話 💖 </th>
+                                            <th class="text-center" style="display: none;">報名時間</th>
+                                            @*<th></th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                @*<td>@item.TH</td>*@
+                                                <td class="text-center">@item.Name</td>
+                                                @*<td>@item.Mail</td>*@
+                                                @*<td>@item.PeopleNumber</td>*@
+                                                <td class="text-center">@item.WantToSay</td>
+                                                <td class="text-center" style="display: none;">@item.CreateDateTime</td>
+                                                @*<td>
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
+                                                        @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                                    </td>*@
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="contact-form">
+                            <div class="row ">
+                                <div class="col-12">
+                                    <div class="form-group ">
+                                        <hr />
+                                        @*雲林CSS*@
+                                        @Html.ActionLink("立即報名!", "Contact", "Home", null, new { @class = "btn btn-primary btn-lg submit-button ", style = "background-color:#b48d06;color:white !import;" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /#about-page -->
+<section id="service-page">
+</section>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="~/Scripts/photowall.js"></script>
+
