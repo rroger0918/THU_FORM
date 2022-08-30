@@ -1,11 +1,5 @@
 ﻿@model IEnumerable<THU_FORM.Models.SignUpModel>
 
-@{
-    List<string> aaa = Model.GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
-    var most = Model.Where(x => x.Mail == aaa.First()).ToList().FirstOrDefault().Name;
-    var second = Model.Where(x => x.Mail == aaa[1]).ToList().FirstOrDefault().Name;
-    var third = Model.Where(x => x.Mail == aaa[2]).ToList().FirstOrDefault().Name;
-}
 <!------ 照片牆 ---------->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,194 +11,117 @@
     b, h2, h6 {
         color: black !important;
     }
-
-    #about-page {
-        padding: 100px 0 0 0 !important;
-    }
-
-    .filter-button {
-        background-color: #b48d06;
-        color: white;
-        border-color: white;
-    }
-
-        .filter-button:hover, .filter-button:focus, .filter-button.active {
-            background-color: white !important;
-            color: #b48d06 !important;
-            border-color: #b48d06 !important;
-        }
-
     h1 {
         color: #b48d06;
     }
+    @*label {
+        display: block !important;
+    }*@
 </style>
 
-
-
-<section class="portfolio" id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: -10%;">
-                <br>
-                <br>
-                <h3 class="gallery-title" style="color: #b48d06;">祝福新人</h3>
-                <div class="service-aro-icon ">
-                    <div class="service-aro-left "></div>
-                    <i class="fa fa-rocket "></i>
-                    <div class="service-aro-right "></div>
-                </div>
-                <h3 class="gallery-subtitle"><span style="border-left: 5px solid #b48d06 ;">&nbsp; ㊗️</span>福最踴躍的前三名親友<br>將獲得神秘獎品</h3>
-            </div>
-
-            <div align="center">
-                <button type="button" class="btn btn-lg" style="pointer-events: none;  text-align: start; background-color: white !important;">🥇</button><span align="center">@most</span>
-
-                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button> <span align="center">@second</span>
-
-
-                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥉</button><span align="center">@third</span>
-
-                <br />
-                <br />
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/0326.jpg" />
-                        <div class='img-info'>
-                            <h4>中華郵政 資安管理員</h4>
-                            <h4>璇璇海豹</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/400X250.jpg" />
-                        <div class='img-info'>
-                            <h4>ShopBack 前端工程師</h4>
-                            <h4>J0hnny</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/yachu.jpg" />
-                        <div class='img-info'>
-                            <h4>法務部資訊處 分析師</h4>
-                            <h4>Wenna</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/adam.jpg" />
-                        <div class='img-info'>
-                            <h4>勤業眾信 資安風險諮詢顧問</h4>
-                            <h4>Adam</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/e..jpg" />
-                        <div class='img-info'>
-                            <h4>Garena 前端工程師</h4>
-                            <h4>Rose</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/yang.jpg" />
-                        <div class='img-info'>
-                            <h4>PE Fund 研究員</h4>
-                            <h4>Sam 誠君</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/jhao.jpg" />
-                        <div class='img-info'>
-                            <h4>蝦皮購物 測試工程師 </h4>
-                            <h4>趙姊</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/Limon.jpg" />
-                        <div class='img-info'>
-                            <h4>提克斯國際餐飲 執行長特助</h4>
-                            <h4>黑狗 Daniel</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/mon.jpg" />
-                        <div class='img-info'>
-                            <h4>LT.C Content Creator</h4>
-                            <h4>Allen Mon </h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/owen.jpg" />
-                        <div class='img-info'>
-                            <h4>今網通訊 前端工程師</h4>
-                            <h4>Owen</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category2">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/Ting.jpg" />
-                        <div class='img-info'>
-                            <h4>玉山銀行 應用系統工程師</h4>
-                            <h4>阿冠</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="gallery_product col-sm-3 col-xs-6 filter category1">
-                    <a class="fancybox">
-                        <img class="img-responsive" alt="" src="~/images/teacher/flower.jpg" />
-                        <div class='img-info'>
-                            <h4>臺北市政府資訊局 管理師</h4>
-                            <h4>Rina</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-</section>
-
 <!-- /#service-page -->
 <!-- /#service-page -->
 
-<section id="about-page ">
+<section id="contact-page ">
     <div class="container ">
-        <div class="row " style=" padding-top: 40px; padding-bottom: 40px; ">
+        <div class="row " style=" padding-top: 70px; padding-bottom: 40px; ">
             <div class="col-md-12 text-center">
-                <h1 class="contact-title text-center">報名聚會，把握機會</h1>
+                <h1 class="contact-title text-center" style="color: #b48d06;">  - 祝福新人榜 -  </h1>
                 <div class="service-aro-icon ">
                     <div class="service-aro-left "></div>
                     <i class="fa fa-rocket "></i>
                     <div class="service-aro-right "></div>
                 </div>
-                <h2>當前成員</h2><br>
-                <div class="contact-form  ">
+                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; ㊗️</span>福最踴躍的前三名親友，將獲得精品好禮</h5><br>
+                <div align="center" style="margin-bottom:5%;">
+                    @{
+                        var most = string.Empty;
+                        var second = string.Empty;
+                        var third = string.Empty;
+                        List<string> realTimeModelList = Model.GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
+                        if (realTimeModelList.Count >= 3)
+                        {
+                            most = Model.Where(x => x.Mail == realTimeModelList.First()).ToList().FirstOrDefault().Name;
+                            second = Model.Where(x => x.Mail == realTimeModelList[1]).ToList().FirstOrDefault().Name;
+                            third = Model.Where(x => x.Mail == realTimeModelList[2]).ToList().FirstOrDefault().Name;
+                        }
+                        if (realTimeModelList.Count >= 3)
+                        {
+                            <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; R</span>eal Time 統計</h5>
+                            <button type="button" class="btn btn-lg" style="pointer-events: none;  text-align: start; background-color: white !important;">🥇</button><span align="center">@most</span>
+                            <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button> <span align="center">@second</span>
+                            <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥉</button><span align="center">@third</span>
+                        }
+                        else
+                        {
+                            <hr>
+                            <h5>資料未達三筆，歡迎踴躍報名 ~</h5>
+                        }
+                        if (Session["UserEmail"] != null && Session["UserEmail"].ToString() == "leekuantean@gmail.com" && realTimeModelList.Count >= 3)
+                        {
+                            <div>
+                                <span style="text-align: start">第一名 : @Model.Where(x => x.Mail == realTimeModelList.First()).ToList().Count 筆 / </span>
+                                <span style="text-align: start">第二名 : @Model.Where(x => x.Mail == realTimeModelList[1]).ToList().Count 筆 / </span>
+                                <span style="text-align: start">第三名 : @Model.Where(x => x.Mail == realTimeModelList[2]).ToList().Count 筆</span>
+                            </div>
+                        }
+                    }
+                </div>
+                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; D</span>eadline 統計</h5>
+                @{
+                    //設定期限
+                    var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+                    DateTimeOffset localServerTime = DateTimeOffset.Now;
+                    DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
+                    //正式時間
+                    var dateTimeStr = "2022-09-09  18:00:00";
+                    //測試用時間
+                    //var dateTimeStr = "2022-08-31  02:00:00";
+                    var deadLine = DateTime.Parse(dateTimeStr);
+
+                    var deadMost = string.Empty;
+                    var deadsecond = string.Empty;
+                    var deadthird = string.Empty;
+                    if (localTime <= deadLine)
+                    {
+                        <h5>待開獎</h5>
+                    }
+
+                    if (localTime > deadLine)
+                    {
+                        //設定統計至期限的資料 (依照建立時間順序排列)
+                        List<string> deadTimeModelList = Model.Where(x => DateTime.Parse(x.CreateDateTime) <= deadLine).OrderBy(x => x.CreateDateTime).GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
+                        if (deadTimeModelList.Count >= 3)
+                        {
+                            deadMost = Model.Where(x => x.Mail == deadTimeModelList.First()).ToList().FirstOrDefault().Name;
+                            deadsecond = Model.Where(x => x.Mail == deadTimeModelList[1]).ToList().FirstOrDefault().Name;
+                            deadthird = Model.Where(x => x.Mail == deadTimeModelList[2]).ToList().FirstOrDefault().Name;
+                        }
+                        if (deadTimeModelList.Count >= 3)
+                        {
+                            <div align="center" style="margin-bottom:5%;">
+                                <button type="button" class="btn btn-lg" style="pointer-events: none;  text-align: start; background-color: white !important;">🥇</button><span align="center">@deadMost</span>
+                                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button> <span align="center">@deadsecond</span>
+                                <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥉</button><span align="center">@deadthird</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <h5>統計截止，哭哭得獎人數不足三人</h5>
+                        }
+                        if (Session["UserEmail"] != null && Session["UserEmail"].ToString() == "leekuantean@gmail.com" && deadTimeModelList.Count >= 3)
+                        {
+                            <div>
+                                <span style="text-align: start">第一名 : @Model.Where(x => x.Mail == deadTimeModelList.First()).ToList().Count 筆 / </span>
+                                <span style="text-align: start">第二名 : @Model.Where(x => x.Mail == deadTimeModelList[1]).ToList().Count 筆 / </span>
+                                <span style="text-align: start">第三名 : @Model.Where(x => x.Mail == deadTimeModelList[2]).ToList().Count 筆</span>
+                            </div>
+                        }
+                    }
+                }
+
+                <br>
+                <div class="contact-form" style="margin-top:3%;">
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="form-group">
@@ -234,10 +151,10 @@
                                                 <td class="text-center">@item.WantToSay</td>
                                                 <td class="text-center" style="display: none;">@item.CreateDateTime</td>
                                                 @*<td>
-                                                        @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
-                                                        @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
-                                                        @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                                    </td>*@
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
+                                            @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                        </td>*@
                                             </tr>
 
                                         }
@@ -245,14 +162,28 @@
                                 </table>
                             </div>
                         </div>
+
+
                         <div class="contact-form">
-                            <div class="row ">
+                            <div class="row">
                                 <div class="col-12">
                                     <div class="form-group ">
                                         <hr />
                                         @*雲林CSS*@
-                                        @Html.ActionLink("立即報名!", "Contact", "Home", null, new { @class = "btn btn-primary btn-lg submit-button ", style = "background-color:#b48d06;color:white !import;" })
+                                        @Html.ActionLink("祝福Go !", "Contact", "Home", null, new { @class = "btn btn-primary btn-lg submit-button ", style = "background-color:#b48d06;color:white !import;" })
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5%;">
+                                <div class="col-12 text-left" style="margin: 0 10% 5% 10%;"> <span style="border-left: 5px solid #b48d06 ;">&nbsp; 將</span>根據【聯絡方式】進行統計，請確保每次祝福的聯絡方式相同。  </div>
+                                <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">
+                                    <span style="border-left: 5px solid #b48d06 ;">&nbsp; 統</span>計至2022/09/09 18:00:00。
+                                </div>
+                                <div class="col-12 text-left" style="margin: 0 10% 5% 10%; ">
+                                    <span style="border-left: 5px solid #b48d06 ;">&nbsp; 非</span>祝福或活動建議等等的無意義留言，管理員將依照數位中介法執行刪除作業。
+                                </div>
+                                <div class="col-12 text-left" style="margin: 0 10% 0 10%; ">
+                                    <span style="border-left: 5px solid #b48d06 ;">&nbsp; 因</span>活動方經費有限，當前三名超過3人時，採抽籤決定得獎者，敬請見諒。
                                 </div>
                             </div>
                         </div>
@@ -263,8 +194,14 @@
     </div>
 </section>
 <!-- /#about-page -->
-<section id="service-page">
-</section>
+<!--動畫雞走路-->
+<div class="col-lg-12 text-center" id="rookie">
+    <div class="row text-center">
+        @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_kotaolcw.json" background="transparent" speed="1" style="width:90vw;margin-left:8%;" loop autoplay></lottie-player>
+        @*<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>*@
+    </div>
+</div>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

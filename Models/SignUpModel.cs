@@ -22,15 +22,18 @@ namespace THU_FORM.Models
         //是否為匿名
         public byte scales { get; set; }
 
+        //是否為純祝福
+        public byte JustBless { get; set; }
+
         //信箱
         [Required]
         public string Mail { get; set; }
 
         //攜伴人數
-        [Required]
         public string PeopleNumber { get; set; }
 
         //想說的話
+        [Required]
         public string WantToSay { get; set; }
 
         //確定參加

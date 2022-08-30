@@ -61,7 +61,7 @@ $(document).ready(function () {
             "lengthMenu": "顯示前 _MENU_ 位會員🎓 ",
             "info": " 總計 _TOTAL_ 位會員🎓  ",
             "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 位會員🎓 ",
-            "search": "🔎搜尋:",
+            "search": "🔎搜尋: ",
             "paginate": {
                 "first": "第一頁",
                 "last": "最後一頁",
@@ -80,7 +80,7 @@ $(document).ready(function () {
             "lengthMenu": "顯示前 _MENU_ 則紀錄🎓 ",
             "info": " 總計 _TOTAL_ 則紀錄🎓  ",
             "infoEmpty": "顯示第 0 到第 0 位會員🎓 ，共計 0 則紀錄🎓 ",
-            "search": "🔎搜尋:",
+            "search": "🔎搜尋: ",
             "paginate": {
                 "first": "第一頁",
                 "last": "最後一頁",
@@ -90,20 +90,7 @@ $(document).ready(function () {
         }
     });
 
-    //報名表單匿名
-    $("#CheckBox").change(function () {
-        if (this.checked) {
-            $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")
-            $('#user_name').remove();
-            $('#user_name2').show();
-            $('#user_name2').attr("required", true);
-        }
-        else {
-            $('#InputDiv').html("<input type='text' class='form-control user_name' name='Name' id='user_name' tabindex='1' value='" + $('#txtSessionName').val() + "' required  autofocus readonly >")
-            $('#user_name2').remove();
-            $('#user_name').show();
-        }
-    });
+
 });
 
 
@@ -121,7 +108,7 @@ function ShowDelete() {
 }
 
 //刪除成功燈箱關閉
-function OKgood () {
+function OKgood() {
     $("#mask").hide();
     $("#deleteSuccess").hide();
 
@@ -141,4 +128,38 @@ function OKgood () {
         $("#mask").show();
         $("#editSuccessBox").show();
     }
+}());
+
+(function () {
+    //報名表單匿名
+    $("#CheckBox").change(function () {
+        if (this.checked) {
+            $('#InputDiv').html("<input placeholder='乂卍煞采o戀羽卍乂' type='text' class='form-control user_name' name='Name' id='user_name2' tabindex='1' autofocus hidden >")
+            $('#user_name').remove();
+            $('#user_name2').show();
+            $('#user_name2').attr("required", true);
+        }
+        else {
+            $('#InputDiv').html("<input type='text' class='form-control user_name' name='Name' id='user_name' tabindex='1' value='" + $('#txtSessionName').val() + "' required  autofocus readonly >")
+            $('#user_name2').remove();
+            $('#user_name').show();
+        }
+    });
+}());
+
+//報名表單純祝福
+(function () {
+    $("#JustBless").change(function () {
+        if (this.checked) {
+            $('#PeopleNumber').prop('required', false);
+            $('#PeopleNumber').attr('value', null);
+            $('#PeopleNumber').hide();
+
+        }
+        else {
+            $('#PeopleNumber').attr('required', true);
+            $('#PeopleNumber').attr('value', 1);
+            $('#PeopleNumber').show();
+        }
+    });
 }());
