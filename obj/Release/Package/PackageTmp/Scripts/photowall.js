@@ -1,5 +1,5 @@
 ﻿/*	gallery */
-$(document).ready(function() {
+$(document).ready(function () {
 
     $(".filter-button").click(function() {
         var value = $(this).attr('data-filter');

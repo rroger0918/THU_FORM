@@ -79,8 +79,8 @@
                 <div class="modal-footer">
                     @if (@TempData["Message"] != null && @TempData["Message"].ToString() == " 🤜 登入成功 ")
                     {
-                        <button type="button" class="btn btn-primary">  @Html.ActionLink("返回首頁 👌🏼", "Index", "Home", null, new { style = "color:white;padding:1%;" })</button>
-                        <button type="button" class="btn btn-secondary">@Html.ActionLink("填寫報名表單 🖖🏼", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
+                        <button type="button" class="btn btn-primary">  @Html.ActionLink("查看祝福榜 ㊗️", "ContactList", "Home", null, new { style = "color:white;padding:1%;" })</button>
+                        <button type="button" class="btn btn-secondary">@Html.ActionLink("填寫報名表單 ✍️", "Contact", "Home", null, new { style = "padding:1%;" }) </button>
                     }
                     else
                     {

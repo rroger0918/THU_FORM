@@ -187,7 +187,7 @@
                     @*雲林CSS*@
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li style="margin-bottom:1%; font-size: 1.5em; font-weight:bold !important;"><a style="color: #b48d06 !important;" id="hoverAction10">🙋  Hi， @Session["UserName"]</a></li>
+                        <li style="margin-bottom:1%; font-size: 1.5em; font-weight:bold !important;"><a style="color: #b48d06 !important;" id="hoverAction10">🙋  Hi！  @Session["UserName"]</a></li>
 
                         <li>
                             @Html.ActionLink("🚀  報名管理", "ManagePage", "Home", null, new { @id = "hoverAction4" })
@@ -210,7 +210,8 @@
                     </li>
                     <li>@Html.ActionLink("💎  首頁", "Index", "Home", null, new { @id = "hoverAction1" })</li>
                     <li>@Html.ActionLink("💎  議程", "Theme", "Home", null, new { @id = "hoverAction2" })</li>
-                    <li>@Html.ActionLink("💎  報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
+                    <li>@Html.ActionLink("💖  祝福榜", "ContactList", "Home", null, new { @id = "hoverAction5" })</li>
+                    <li>@Html.ActionLink("💖  填寫報名表單", "Contact", "Home", null, new { @id = "hoverAction3" })</li>
                     <li><hr style="width: 70% !important;"></li>
                 </ul>
             </div>
