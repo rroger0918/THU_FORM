@@ -121,48 +121,8 @@
                     <i class="fa fa-rocket "></i>
                     <div class="service-aro-right "></div>
                 </div>
-                <h2>當前成員</h2><br>
                 <div class="contact-form  ">
                     <div class="row align-items-center">
-                        <div class="col-12">
-                            <div class="form-group">
-
-                                    @*<h2 style="text-align:center;">當前成員</h2>*@
-
-                                    <table class="table" id="dataTable">
-                                        <thead>
-                                            <tr>
-                                                @*<th class="text-center">屆</th>*@
-                                                <th class="text-center">姓名</th>
-                                                @*<th class="text-center">聯絡方式</th>*@
-                                                @*<th class="text-center">報名人數</th>*@
-                                                <th class="text-center">💖 祝福的話 💖 </th>
-                                                <th class="text-center" style="display: none;">報名時間</th>
-                                                @*<th></th>*@
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    @*<td>@item.TH</td>*@
-                                                    <td  class="text-center">@item.Name</td>
-                                                    @*<td>@item.Mail</td>*@
-                                                    @*<td>@item.PeopleNumber</td>*@
-                                                    <td  class="text-center">@item.WantToSay</td>
-                                                    <td  class="text-center" style="display: none;">@item.CreateDateTime</td>
-                                                    @*<td>
-                                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
-                                                            @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
-                                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                                        </td>*@
-                                                </tr>
-
-                                            }
-                                        </tbody>
-                                    </table>
-                            </div>
-                        </div>
                         <div class="contact-form">
                             <div class="row ">
                                 <div class="col-12">
