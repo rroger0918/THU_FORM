@@ -11,12 +11,14 @@
     b, h2, h6 {
         color: black !important;
     }
+
     h1 {
         color: #b48d06;
     }
-    @*label {
-        display: block !important;
-    }*@
+
+    td {
+        word-break: break-all;
+    }
 </style>
 
 <!-- /#service-page -->
@@ -32,7 +34,28 @@
                     <i class="fa fa-rocket "></i>
                     <div class="service-aro-right "></div>
                 </div>
-                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; ㊗️</span>福最踴躍的前三名親友，將獲得精品好禮</h5><br>
+                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; 祝</span>福最踴躍的前三名親友，將獲得精品好禮<span onclick="showme('widget');" id="geeks" class="col-sm-1" style="display: inline-block;">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                @*<div onclick="showme('widget');" id="geeks" class="col-sm-1" style="display: inline-block; margin-left:-20px;">
+                        <i class="fa fa-question-circle"></i>
+                    </div>*@
+                <div id="widget" style="display:none; padding-left:10px;background-color:antiquewhite;">
+                    <div class="row" style="color:black !important;">
+                        <hr style="width:85%;">
+                        <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">1.&ensp;填寫報名表單並給予新人祝福，留言祝福數量前三名者將獲得精美好禮。</div>
+                        <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">2.&ensp;表單欄位【聯絡方式】為統計之依據，請確保每次祝福的聯絡方式相同。</div>
+                        <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">
+                            3.&ensp; 統計至2022/09/09 18:00:00。
+                        </div>
+                        <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">
+                            4.&ensp;非祝福或吹捧新人或活動建議等等的無意義留言，管理員將依照數位中介法執行刪除作業。
+                        </div>
+                        <div class="col-12 text-left" style="margin: 0 10% 5% 10%;">
+                            5.&ensp;因活動方經費有限，當前三名超過3人時，採抽籤決定得獎者，敬請見諒。
+                        </div>
+                        <div class="col-12" style="margin: 0 10% 5% 10%;"><span>👉</span><span style="text-decoration: underline; margin: 0 10px !important;">@Html.ActionLink("前往報名 / 祝福 ~", "Contact", "Home", null, null)</span></div>
+                        <hr style="width: 85%;">
+                    </div>
+                </div><br>
                 <div align="center" style="margin-bottom:5%;">
                     @{
                         var most = string.Empty;
@@ -47,9 +70,9 @@
                         }
                         if (realTimeModelList.Count >= 3)
                         {
-                            <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; R</span>eal Time 統計</h5>
+                            <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; 即時排名</span></h5>
                             <button type="button" class="btn btn-lg" style="pointer-events: none;  text-align: start; background-color: white !important;">🥇</button><span align="center">@most</span>
-                            <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button> <span align="center">@second</span>
+                            <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥈</button><span align="center">@second</span>
                             <button type="button" class="btn  btn-lg" style="pointer-events: none; text-align: start; background-color: white !important;">🥉</button><span align="center">@third</span>
                         }
                         else
@@ -67,7 +90,7 @@
                         }
                     }
                 </div>
-                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; D</span>eadline 統計</h5>
+                <h5><span style="border-left: 5px solid #b48d06 ;">&nbsp; Deadline排名</span></h5>
                 @{
                     //設定期限
                     var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
@@ -84,7 +107,13 @@
                     var deadthird = string.Empty;
                     if (localTime <= deadLine)
                     {
-                        <h5>待開獎</h5>
+                        <h5>- 待開獎，倒數 -</h5>
+                        <!-- COUNTDOWN -->
+
+                        @*雲林CSS*@
+                        <h6 id="demo" style="color: black;">
+                        </h6>
+
                     }
 
                     if (localTime > deadLine)
@@ -151,10 +180,10 @@
                                                 <td class="text-center">@item.WantToSay</td>
                                                 <td class="text-center" style="display: none;">@item.CreateDateTime</td>
                                                 @*<td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
-                                            @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
-                                        </td>*@
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.TH } ,new { @class = "btn btn-default disabled" }) |
+                                                        @Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) |
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.TH }, new { @class = "btn btn-default disabled" })
+                                                    </td>*@
                                             </tr>
 
                                         }
@@ -198,7 +227,7 @@
 <div class="col-lg-12 text-center" id="rookie">
     <div class="row text-center">
         @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_kotaolcw.json" background="transparent" speed="1" style="width:90vw;margin-left:8%;" loop autoplay></lottie-player>
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_kotaolcw.json" background="transparent" speed="0.2" style="width:90vw;margin-left:8%;" autoplay></lottie-player>
         @*<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>*@
     </div>
 </div>
@@ -206,4 +235,50 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="~/Scripts/photowall.js"></script>
+@*倒數計時器*@
+<script>
+    var countDownDate = new Date("September 09, 2022 18:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + " 天 " + hours + " 時 " +
+            minutes + " 分 " + seconds + " 秒 ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "  報名截止  See you !  ";
+        }
+    }, 1000);
+
+    //抽獎規則
+    function showme(id) {
+        var gfg = document.getElementById(id);
+        var GFG = document.getElementById("geeks");
+        if (gfg.style.display == 'block') {
+            gfg.style.display = 'none';
+            GFG.innerHTML =
+                '<i class="fa fa-question-circle"></i>';
+        } else {
+            gfg.style.display = 'block';
+            GFG.innerHTML =
+                '<i class="fa fa-question-circle"></i>';
+        }
+    }
+</script>
+
 

@@ -151,7 +151,8 @@ function OKgood() {
 (function () {
     $("#JustBless").change(function () {
         if (this.checked) {
-            $('#PeopleNumber').prop('required', false);
+            $('#PeopleNumber').removeAttr('required');
+            $('#PeopleNumber').attr('min', 0);
             $('#PeopleNumber').attr('value', null);
             $('#PeopleNumber').hide();
 
