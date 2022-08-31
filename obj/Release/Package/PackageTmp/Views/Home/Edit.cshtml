@@ -109,11 +109,11 @@
                           <label for="JustBless">或 Just祝福</label>
                           @if (Model != null && Model.PeopleNumber != null)
                           {
-                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~10" min="1" max="5" value=@Model.PeopleNumber required>
+                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" value=@Model.PeopleNumber required>
                           }
                           else
                           {
-                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~10" min="1" max="5" required>
+                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" required>
                           }
                       </div>
                       <div class="form-group mb-1">
