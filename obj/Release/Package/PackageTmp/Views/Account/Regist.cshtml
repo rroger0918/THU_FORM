@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container" style="margin-top:55px;width:90vw;height:60vh;">
+<div class="container" style="margin-top: 75px; width: 90vw;">
 
     @using (Html.BeginForm())
     {
@@ -59,14 +59,15 @@
         @*<button id="singUpRedirect">使用google註冊(Redirect)</button>*@
         @Html.ActionLink("返到登入頁", "Login", "Account")
     </div>
-</div>
-<!--動畫雞走路-->
-<div class="col-lg-12 mt-3" id="rookie" style="margin-left:20%;">
-    <div class="row text-center">
-        @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_7ub0glk3.json" background="transparent" speed="2" style="width:90vw;margin-top:20%;" autoplay></lottie-player>
+    <!--動畫雞走路-->
+    <div class="col-lg-12 mt-3" id="rookie" style=" margin-left: 20%;">
+        <div class="row text-center">
+            @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_7ub0glk3.json" background="transparent" speed="2" style="width:90vw;margin-top:20%;" autoplay></lottie-player>
+        </div>
     </div>
 </div>
+
 
 
 <script>

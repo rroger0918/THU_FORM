@@ -152,13 +152,16 @@ function OKgood() {
     $("#JustBless").change(function () {
         if (this.checked) {
             $('#PeopleNumber').removeAttr('required');
-            $('#PeopleNumber').attr('min', 0);
+            $('#PeopleNumber').prop('min', null);
+            $('#PeopleNumber').prop('max', null);
             $('#PeopleNumber').attr('value', null);
             $('#PeopleNumber').hide();
 
         }
         else {
             $('#PeopleNumber').attr('required', true);
+            $('#PeopleNumber').attr('min', 1);
+            $('#PeopleNumber').attr('max', 5);
             $('#PeopleNumber').attr('value', 1);
             $('#PeopleNumber').show();
         }
