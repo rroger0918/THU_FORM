@@ -108,10 +108,10 @@ function ShowDelete(clicked_id) {
 }
 
 //刪除確定跑Controller
-function aaa(id) {
+function confirmDelete(id) {
     $.ajax({
         // edit to add steve's suggestion.
-        url: '/Home/Delete/'+id,        
+        url: '/Home/Delete/' + id,
         success: function (data) {
             location.reload(true);
         }
@@ -165,7 +165,7 @@ function OKgood() {
         if (this.checked) {
             $('#PeopleNumber').remove();
         }
-        else {            
+        else {
             $('#AddPeopleNumber').html('<input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" value="' + initialVal + '" required>');
         }
     });
