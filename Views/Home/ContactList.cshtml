@@ -61,7 +61,7 @@
                         var most = string.Empty;
                         var second = string.Empty;
                         var third = string.Empty;
-                        List<string> realTimeModelList = Model.GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
+                        List<string> realTimeModelList = Model.OrderBy(x => x.CreateDateTime).GroupBy(x => x.Mail).Select(x => new { Name = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Select(x => x.Name).ToList();
                         if (realTimeModelList.Count >= 3)
                         {
                             most = Model.Where(x => x.Mail == realTimeModelList.First()).ToList().FirstOrDefault().Name;

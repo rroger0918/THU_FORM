@@ -101,10 +101,21 @@ function CancelDelete() {
 }
 
 //刪除資料燈箱打開
-function ShowDelete() {
+function ShowDelete(clicked_id) {
     $("#mask").show();
+    $(".deleteFunc").attr('id', clicked_id);
     $("#deleteOrNot").show();
+}
 
+//刪除確定跑Controller
+function aaa(id) {
+    $.ajax({
+        // edit to add steve's suggestion.
+        url: '/Home/Delete/'+id,        
+        success: function (data) {
+            location.reload(true);
+        }
+    });
 }
 
 //刪除成功燈箱關閉
@@ -149,21 +160,13 @@ function OKgood() {
 
 //報名表單純祝福
 (function () {
+    var initialVal = $('#PeopleNumber').val();
     $("#JustBless").change(function () {
         if (this.checked) {
-            $('#PeopleNumber').removeAttr('required');
-            $('#PeopleNumber').prop('min', null);
-            $('#PeopleNumber').prop('max', null);
-            $('#PeopleNumber').attr('value', null);
-            $('#PeopleNumber').hide();
-
+            $('#PeopleNumber').remove();
         }
-        else {
-            $('#PeopleNumber').attr('required', true);
-            $('#PeopleNumber').attr('min', 1);
-            $('#PeopleNumber').attr('max', 5);
-            $('#PeopleNumber').attr('value', 1);
-            $('#PeopleNumber').show();
+        else {            
+            $('#AddPeopleNumber').html('<input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" value="' + initialVal + '" required>');
         }
     });
 }());

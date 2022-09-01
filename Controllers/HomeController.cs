@@ -140,7 +140,7 @@ namespace THU_FORM.Controllers
                 FirebaseResponse response = client.Delete("contact/" + ID);
                 if (response.StatusCode.ToString() == "OK")
                 {
-                    TempData["DeleteMessage"] = "刪除成功";
+                    Session["DeleteMessage"] = "刪除成功";
                     return RedirectToAction("ManagePage");
                 }
             }

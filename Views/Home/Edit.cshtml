@@ -48,97 +48,101 @@
             <div class="row">
                 <div class="col-3 col-sm-3 col-xs-3" style="text-decoration:underline;">@Html.ActionLink("上一頁", "ManagePage", "Home", null, null)</div>
             </div><br>
-                  <form action="@Url.Action("Edit", "Home")" method="post" id="Form1" }>
-                      @if (Model != null && Model.Name != null)
-                      {
-                          <input type="hidden" id="txtSessionName" value=@Model.Name>
-                      }
-                      <div class="form-group mb-1">
-                          <div style="padding-right: 0px;">
-                              <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;margin-right:3%;">&nbsp;  姓名</label>
-                              @if (Model != null && Model.Name != null)
-                              {
-                                  <input type="checkbox" name="scales" value="1" id="CheckBox">
-                                  <label for="scales">或使用暱稱</label>
-                              }
-                          </div>
-                          <div id="InputDiv">
-                              @if (Model != null && Model.Name != null)
-                              {
-                                  <input type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1" value=@Model.Name
-                                         required autofocus readonly>
-                              }
-                              else
-                              {
-                                  <input placeholder="乂卍煞采o戀羽卍乂" type="text" class="form-control user_name" name="Name" id="user_name2" tabindex="1"
-                                         autofocus>
-                              }
-                          </div>
-                      </div>
-                      <div class="form-group mb-1">
-                          <label style="border-left: 5px solid #b48d06 ;">
-                              &nbsp; 身分別
-                              @*第幾屆*@
-                          </label>
-                          <select class="form-control" type="text" name="TH" required>
-                              @if (Model != null && Model.TH != null)
-                              {
-                                  <option selected="selected">@Model.TH</option>
-                              }
-                              <option style="background-color:antiquewhite;" value="">- 請選擇身分別 -</option>
-                              <option value="男方親友">男方親友</option>
-                              <option value="女方親友">女方親友</option>
-                              <option value="同為雙方親友">同為雙方親友</option>
-                          </select>
-                          @*<input class="form-control" type="text" name="TH" />*@
-                      </div>
-                      <div class="form-group mb-1">
-                          <label for="exampleFormControlInput1" style=" border-left: 5px solid #b48d06 ;">&nbsp;  聯絡方式</label>
-                          @if (Model != null && Model.Mail != null)
-                          {
-                              <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" value=@Model.Mail required readonly>
-                          }
-                          else
-                          {
-                              <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" required>
-                          }
-                      </div>
-                      <div class="form-group mb-1">
-                          <label for="exampleFormControlSelect1" style="border-left: 5px solid #b48d06 ;">&nbsp;  報名人數 ( 至多5人 )</label>
-                          <input type="checkbox" name="JustBless" value="1" id="JustBless">
-                          <label for="JustBless">或 Just祝福</label>
-                          @if (Model != null && Model.PeopleNumber != null)
-                          {
-                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" value=@Model.PeopleNumber required>
-                          }
-                          else
-                          {
-                              <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" required>
-                          }
-                      </div>
-                      <div class="form-group mb-1">
-                          <label for="exampleFormControlTextarea1">&nbsp; 祝福的話 ~</label>
-                          @if (Model != null && Model.WantToSay != null)
-                          {
-                              <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5">@Model.WantToSay</textarea>
-                          }
-                          else
-                          {
-                              <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
-                          }
-                      </div>
-                      <div class="form-check mb-2" style="border-left: 5px solid #b48d06 ;">
-                          &nbsp;
-                          <input class="form-check-input" name="ConfirmOK" type="checkbox" id="flexCheckIndeterminate" value="1" required>
-                          <label class="form-check-label" for="flexCheckIndeterminate">
-                              <span>&nbsp; 確定修改 👍</span>
-                          </label>
-                      </div>
-                      <div class="form-group" style="padding-top: 3%; margin-top: 3%;margin-bottom: -15%;">
-                          <button name="submit" type="submit" class="btn btn-primary my-1"> 儲存 </button>
-                      </div>
+            <form action="@Url.Action("Edit", "Home")" method="post" id="Form1" }>
+                @if (Model != null && Model.Name != null)
+                {
+                    <input type="hidden" id="txtSessionName" value=@Model.Name>
+                }
+                <div class="form-group mb-1">
+                    <div style="padding-right: 0px;">
+                        <label for="exampleFormControlInput1" style="border-left: 5px solid #b48d06 ;margin-right:3%;">&nbsp;  姓名</label>
+                        @if (Model != null && Model.Name != null)
+                        {
+                            <input type="checkbox" name="scales" value="1" id="CheckBox">
+                            <label for="scales">或使用暱稱</label>
+                        }
+                    </div>
+                    <div id="InputDiv">
+                        @if (Model != null && Model.Name != null)
+                        {
+                            <input type="text" class="form-control user_name" name="Name" id="user_name" tabindex="1" value=@Model.Name
+                                   required autofocus readonly>
+                        }
+                        else
+                        {
+                            <input placeholder="乂卍煞采o戀羽卍乂" type="text" class="form-control user_name" name="Name" id="user_name2" tabindex="1"
+                                   autofocus>
+                        }
+                    </div>
+                </div>
+                <div class="form-group mb-1">
+                    <label style="border-left: 5px solid #b48d06 ;">
+                        &nbsp; 身分別
+                        @*第幾屆*@
+                    </label>
+                    <select class="form-control" type="text" name="TH" required>
+                        @if (Model != null && Model.TH != null)
+                        {
+                            <option selected="selected">@Model.TH</option>
+                        }
+                        <option style="background-color:antiquewhite;" value="">- 請選擇身分別 -</option>
+                        <option value="男方親友">男方親友</option>
+                        <option value="女方親友">女方親友</option>
+                        <option value="同為雙方親友">同為雙方親友</option>
+                    </select>
+                    @*<input class="form-control" type="text" name="TH" />*@
+                </div>
+                <div class="form-group mb-1">
+                    <label for="exampleFormControlInput1" style=" border-left: 5px solid #b48d06 ;">&nbsp;  聯絡方式</label>
+                    @if (Model != null && Model.Mail != null)
+                    {
+                        <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" value=@Model.Mail required readonly>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control email" name="Mail" aria-describedby="emailHelp" placeholder="Enter email or others" required>
+                    }
+                </div>
+                <div class="form-group mb-1">
+                    <label for="exampleFormControlSelect1" style="border-left: 5px solid #b48d06 ;">&nbsp;  報名人數 ( 至多5人 )</label>
+                    <input type="checkbox" name="JustBless" value="1" id="JustBless">
+                    <label for="JustBless">或 Just祝福</label>
+                    @if (Model != null && Model.PeopleNumber != null)
+                    {
+                        <div id="AddPeopleNumber">
+                            <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" value=@Model.PeopleNumber required>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="AddPeopleNumber">
+                            <input name="PeopleNumber" type="number" class="form-control PeopleNumber" id="PeopleNumber" placeholder="1~5" min="1" max="5" required>
+                        </div>
+                    }
+                </div>
+                <div class="form-group mb-1">
+                    <label for="exampleFormControlTextarea1">&nbsp; 祝福的話 ~</label>
+                    @if (Model != null && Model.WantToSay != null)
+                    {
+                        <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5">@Model.WantToSay</textarea>
+                    }
+                    else
+                    {
+                        <textarea style="max-width:100%;" class="form-control message" id="exampleFormControlTextarea1" name="WantToSay" rows="3" placeholder="白頭偕老、女兒滿堂、謝謝新郎程設Carry、新娘好美……等等。" tabindex="5"></textarea>
+                    }
+                </div>
+                <div class="form-check mb-2" style="border-left: 5px solid #b48d06 ;">
+                    &nbsp;
+                    <input class="form-check-input" name="ConfirmOK" type="checkbox" id="flexCheckIndeterminate" value="1" required>
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        <span>&nbsp; 確定修改 👍</span>
+                    </label>
+                </div>
+                <div class="form-group" style="padding-top: 3%; margin-top: 3%;margin-bottom: -15%;">
+                    <button name="submit" type="submit" class="btn btn-primary my-1"> 儲存 </button>
+                </div>
 
-                  </form>
+            </form>
         </div>
 
         <!--動畫雞走路-->

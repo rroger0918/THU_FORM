@@ -25,6 +25,7 @@
         background-color: #b48d06 !important;
         border-color: white !important;
     }
+
     td {
         word-break: break-all;
     }
@@ -35,9 +36,9 @@
     ViewBag.Title = "Home Page";
 }
 
-@if (TempData["DeleteMessage"] != null)
+@if (Session["DeleteMessage"] != null)
 {
-    <input type="hidden" class="resultValue" value=@TempData["DeleteMessage"] id="DeleteMessageBox" />
+    <input type="hidden" class="resultValue" value=@Session["DeleteMessage"] id="DeleteMessageBox" />
 }
 
 <section id="contact-page ">
@@ -73,12 +74,12 @@
                                         {
                                             <tr>
                                                 @*<td>@item.ID</td>*@
-                                                <td  class="text-center">@item.TH</td>
-                                                <td  class="text-center">@item.Name</td>
+                                                <td class="text-center">@item.TH</td>
+                                                <td class="text-center">@item.Name</td>
                                                 @*<td>@item.Mail</td>*@
-                                                <td  class="text-center">@item.PeopleNumber</td>
-                                                <td  class="text-center">@item.WantToSay</td>
-                                                <td  class="text-center">@item.CreateDateTime</td>
+                                                <td class="text-center">@item.PeopleNumber</td>
+                                                <td class="text-center">@item.WantToSay</td>
+                                                <td class="text-center">@item.CreateDateTime</td>
 
                                                 <td>
 
@@ -86,7 +87,7 @@
 
 
                                                     @*@Html.ActionLink("Read", "Detail", new { id = item.TH }, new { @class = "btn btn-default disabled" }) *@
-                                                    <button type="button" class="btn btn-default" onclick="ShowDelete();"> 刪除</button>
+                                                    <button type="button" class="btn btn-default" id=@item.ID onclick="ShowDelete(this.id);"> 刪除</button>
                                                     @*@Html.ActionLink("Delete", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-default " })*@
 
                                                 </td>
@@ -112,7 +113,6 @@
 @*確認是否刪除燈箱*@
 @foreach (var item in Model)
 {
-
     <div class="modal" id="deleteOrNot" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -128,8 +128,11 @@
                     <h4>確定刪除該筆資料嗎?</h4>
                 </div>
                 <div class="modal-footer">
-                    @Html.ActionLink("確定", "Delete", "Home", new { ID = item.ID }, new { @class = "btn btn-primary" })
-                    <button type="button" class="btn btn-primary" onclick="CancelDelete();"> 取消</button>
+                    <div id="deleteFunc">
+                        <button type="button" class="btn btn-primary deleteFunc" onclick="aaa(this.id);">確定</button>
+                        @*@Html.ActionLink("確定", "Delete", "Home", new { ID = "" }, new { @class = "btn btn-primary getIDVar" })*@
+                        <button type="button" class="btn btn-primary" onclick="CancelDelete();"> 取消</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,7 +154,7 @@
                 <h4>刪除成功</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" style = "color:white;" onclick="OKgood()">OK 讚讚</button>
+                <button type="button" class="btn btn-primary" style="color:white;" onclick="OKgood()">OK 讚讚</button>
                 @*<button type="button" class="btn btn-primary">  @Html.ActionLink("OK 讚讚", "ManagePage", "Home", null, new { style = "color:white;padding:1%;" })</button>*@
             </div>
         </div>
