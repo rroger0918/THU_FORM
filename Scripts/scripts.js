@@ -122,7 +122,6 @@ function confirmDelete(id) {
 function OKgood() {
     $("#mask").hide();
     $("#deleteSuccess").hide();
-
 }
 
 //刪除成功訊息燈箱
