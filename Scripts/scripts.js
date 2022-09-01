@@ -130,6 +130,8 @@ function OKgood() {
     if ($('#DeleteMessageBox').length > 0 && ('#DeleteMessageBox').valueOf() != null && ('#DeleteMessageBox').valueOf() != "") {
         $("#mask").show();
         $("#deleteSuccess").show();
+        //清除DeleteSession
+        $.ajax('/Home/CleanDeleteSession');
     }
 }());
 

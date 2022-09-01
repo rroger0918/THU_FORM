@@ -32,13 +32,10 @@
 </style>
 
 
-@{
-    ViewBag.Title = "Home Page";
-}
 
 @if (Session["DeleteMessage"] != null)
 {
-    <input type="hidden" class="resultValue" value=@Session["DeleteMessage"] id="DeleteMessageBox" />
+    <input type="hidden" class="resultValue" value= @Session["DeleteMessage"] id="DeleteMessageBox" />
 }
 
 <section id="contact-page ">
@@ -103,9 +100,9 @@
         </div>
     </div>
     <!--動畫雞走路-->
-    <div class="col-lg-12 text-right" id="rookie" style="margin-top: -100px;">
+    <div class="col-lg-12 text-right" id="rookie" style="margin-top: -100px;  z-index: -999">
         @Scripts.Render("https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
-        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_nDfyvudjoP.json" background="transparent" speed="1.5" style="width: 400px;" autoplay loop></lottie-player>
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_nDfyvudjoP.json" background="transparent" speed="1.5" style="z-index:-1;width: 400px;" autoplay loop></lottie-player>
         @*<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_6kbjigp3.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>*@
     </div>
 </section>

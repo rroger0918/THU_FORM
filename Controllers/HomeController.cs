@@ -212,5 +212,11 @@ namespace THU_FORM.Controllers
             
             return View(signUpList);
         }
+
+        //清除Session
+        public void CleanDeleteSession()
+        {
+            Session["DeleteMessage"] = null;
+        }
     }
 }
