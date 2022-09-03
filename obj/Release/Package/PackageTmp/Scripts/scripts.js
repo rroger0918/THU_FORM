@@ -122,7 +122,6 @@ function confirmDelete(id) {
 function OKgood() {
     $("#mask").hide();
     $("#deleteSuccess").hide();
-
 }
 
 //刪除成功訊息燈箱
@@ -130,6 +129,8 @@ function OKgood() {
     if ($('#DeleteMessageBox').length > 0 && ('#DeleteMessageBox').valueOf() != null && ('#DeleteMessageBox').valueOf() != "") {
         $("#mask").show();
         $("#deleteSuccess").show();
+        //清除DeleteSession
+        $.ajax('/Home/CleanDeleteSession');
     }
 }());
 

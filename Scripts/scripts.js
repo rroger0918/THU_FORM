@@ -122,6 +122,7 @@ function confirmDelete(id) {
 function OKgood() {
     $("#mask").hide();
     $("#deleteSuccess").hide();
+    $("#sendForgotPassEmailSuccess").hide();
 }
 
 //刪除成功訊息燈箱
@@ -171,3 +172,30 @@ function OKgood() {
         }
     });
 }());
+
+//打開忘記密碼燈箱
+function ForgetPassModal() {
+    $("#mask").show();
+    $("#forgetPass").show();
+}
+
+
+//忘記密碼寄出成功訊息燈箱
+(function () {
+    if ($('#SendForgotPassMailMessageBox').length > 0 && ('#SendForgotPassMailMessageBox').valueOf() != null && ('#SendForgotPassMailMessageBox').valueOf() != "") {
+        $("#mask").show();
+        $("#sendResetPassSuccessBox").show();
+    }
+}());
+
+//打開忘記密碼燈箱
+function ReWriteAccount() {
+    $("#sendResetPassSuccessBox").hide();
+    $("#forgetPass").show();
+}
+
+//忘記密碼燈箱取消
+function CancelResetPass() {
+    $("#forgetPass").hide();
+    $("#mask").hide();
+}

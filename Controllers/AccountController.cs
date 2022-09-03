@@ -20,7 +20,7 @@ namespace THU_FORM.Controllers
     {
         private static string ApiKey = "AIzaSyCWc1Pu-s4rQRetcfnyLzxpltXX7B5NCc4";
         //private static string Bucket = "https://thu-form-default-rtdb.asia-southeast1.firebasedatabase.app/";
-        FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));        
+        FirebaseAuthProvider auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
 
         readonly IFirebaseClient client;
@@ -53,12 +53,12 @@ namespace THU_FORM.Controllers
                 var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
                 var a = await auth.CreateUserWithEmailAndPasswordAsync(model.Email, model.Password, model.Name, true);
-                ModelState.AddModelError(string.Empty, "驗證信傳送至您的信箱📬 ( 高機率被分類到垃圾郵件裡😥 )，敬請協助驗證，謝謝♥");
+                ModelState.AddModelError(string.Empty, "驗證信傳送至您的信箱📬 ( 若收件匣沒有，可能被分類至垃圾郵件中😥 )，敬請協助驗證，謝謝♥");
             }
             catch (FirebaseAuthException ex)
             {
                 string errorReason = ex.Reason.ToString();
- 
+
                 ModelState.AddModelError(string.Empty, "錯誤原因：【" + errorReason + "】，麻煩您重新操作或聯絡系統管理員，謝謝😥");
             }
 
@@ -83,8 +83,8 @@ namespace THU_FORM.Controllers
                 Console.Write(ex);
             }
             // 尚未登入，到登入頁
-            if( returnUrl == "/Home/Contact") { ViewData["NeedLoginMessage"] = "欲填寫報名表，請您先登入呦呦"; }
-           
+            if (returnUrl == "/Home/Contact") { ViewData["NeedLoginMessage"] = "欲填寫報名表，請您先登入呦呦"; }
+
             return View("Login");
         }
 
@@ -152,44 +152,44 @@ namespace THU_FORM.Controllers
             }
         }
 
-        private void ClaimIdentities(string username, bool isPersistent)
-        {
-            // Initialization.
-            var claims = new List<Claim>();
-            try
-            {
-                // Setting
-                claims.Add(new Claim(ClaimTypes.Name, username));
-                var claimIdenties = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
+        //private void ClaimIdentities(string username, bool isPersistent)
+        //{
+        //    // Initialization.
+        //    var claims = new List<Claim>();
+        //    try
+        //    {
+        //        // Setting
+        //        claims.Add(new Claim(ClaimTypes.Name, username));
+        //        var claimIdenties = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
 
-            }
-            catch (Exception ex)
-            {
-                // Info
-                throw ex;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Info
+        //        throw ex;
+        //    }
+        //}
 
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            try
-            {
-                // Verification.
-                if (Url.IsLocalUrl(returnUrl))
-                {
-                    // Info.
-                    return this.Redirect(returnUrl);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Info
-                throw ex;
-            }
+        //private ActionResult RedirectToLocal(string returnUrl)
+        //{
+        //    try
+        //    {
+        //        // Verification.
+        //        if (Url.IsLocalUrl(returnUrl))
+        //        {
+        //            // Info.
+        //            return this.Redirect(returnUrl);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Info
+        //        throw ex;
+        //    }
 
-            // Info.
-            return this.RedirectToAction("LogOff", "Account");
-        }
+        //    // Info.
+        //    return this.RedirectToAction("LogOff", "Account");
+        //}
 
         [Authorize]
         [HttpGet]
@@ -204,29 +204,32 @@ namespace THU_FORM.Controllers
         }
 
         //// 密碼重設頁(自己寫的還沒測試)
-        //public ActionResult ReSetPassword()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> GeneratePasswordResetLinkAsync(string email)
+        {
+            try
+            {
+                var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<ActionResult> ReSetPassword(RegistModel model)
-        //{
-        //    try
-        //    {
-        //        var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig(ApiKey));
+                await auth.SendPasswordResetEmailAsync(email);
+                ModelState.AddModelError("Success", "密碼重設信件已傳送至您的信箱 ( 收件匣or垃圾信件匣 )📬，謝謝♥");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Error", "資料錯誤，請輸入已註冊的信箱帳號😥");
+            }
 
-        //        await auth.SendPasswordResetEmailAsync(model.Email);
-        //        ModelState.AddModelError(string.Empty, "密碼重設信件已傳送至您的信箱📬，謝謝♥");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError(string.Empty, "系統錯誤，麻煩您重新操作一次，謝謝😥");
-        //    }
-
-        //    return View();
-        //}
+            if (ModelState.Where(x => x.Key == "Success").Any())
+            {
+                TempData["SendForgotPassMail"] =  ModelState.Where(x => x.Key == "Success").FirstOrDefault().Value.Errors.FirstOrDefault().ErrorMessage;                
+            }
+            else
+            {
+                TempData["SendForgotPassMail"] = ModelState.Where(x => x.Key == "Error").FirstOrDefault().Value.Errors.FirstOrDefault().ErrorMessage;                
+            }
+            return RedirectToAction("Login", "Account");
+        }
 
     }
 }
