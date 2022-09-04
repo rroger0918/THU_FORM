@@ -106,7 +106,7 @@ namespace THU_FORM.Controllers
             var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
             DateTimeOffset localServerTime = DateTimeOffset.Now;
             DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
-            signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
+            signUpList.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm:ss");
 
             string Id = Guid.NewGuid().ToString("N");
             SetResponse response = client.Set("contact/" + Id, signUpList);
@@ -165,7 +165,7 @@ namespace THU_FORM.Controllers
             var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
             DateTimeOffset localServerTime = DateTimeOffset.Now;
             DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
-            data.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm");
+            data.CreateDateTime = localTime.ToString("yyyy-MM-dd  HH:mm:ss");
 
             SetResponse response = client.Set("contact/" + data.ID, data);
             TempData["EditSuccess"] = "EditSuccess";
