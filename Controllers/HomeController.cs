@@ -204,10 +204,13 @@ namespace THU_FORM.Controllers
                         CreateDateTime = element.Value.CreateDateTime
                     });
                 }
-                if (Session["UserEmail"] != null && Session["UserEmail"].ToString() != "leekuantean@gmail.com")
+                var isManager = Session["UserEmail"].ToString();                
+                if (Session["UserEmail"] != null && isManager == "leekuantean@gmail.com")
                 {
-                    signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
+                    return View(signUpList);
                 }
+                signUpList = signUpList.Where(x => x.Mail == Session["UserEmail"].ToString()).ToList();
+                return View(signUpList);
             }
             
             return View(signUpList);
