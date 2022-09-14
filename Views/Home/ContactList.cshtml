@@ -96,7 +96,7 @@
                     var info = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
                     DateTimeOffset localServerTime = DateTimeOffset.Now;
                     DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
-                    //正式時間
+                    //正式時間 (下方JS倒數時間也要一起改)
                     var dateTimeStr = "2022-09-09  18:00:00";
                     //測試用時間
                     //var dateTimeStr = "2022-08-31  02:00:00";
@@ -105,7 +105,7 @@
                     var deadMost = string.Empty;
                     var deadsecond = string.Empty;
                     var deadthird = string.Empty;
-                    if (localTime <= deadLine)
+                    if (deadLine > localTime)
                     {
                         <h5>- 待開獎，倒數 -</h5>
                         <!-- COUNTDOWN -->
